@@ -8,6 +8,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {New} from "./components/New/New";
 import {Setting} from "./components/Setting/Setting";
 import {Music} from "./components/Music/Music";
+import {Login} from "./components/Login/Login";
 
 
 function App() {
@@ -15,14 +16,16 @@ function App() {
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Navbar_header/>
+
+                <Navbar_header />
                 <div className='app-wrapper-content' >
                     <Routes>
                         <Route path="/profile" element = {<Profile />}/>
                         <Route path="/dialogs" element = {<Dialogs />}/>
                         <Route path="/new" element = {<New />}/>
-                        <Route path="/music" element = {<Music />}/>
+                        <Route path="/music" element = {<Music />} />
                         <Route path="/setting" element = {<Setting />}/>
+                        <Route path='/login' element={<Login/>} />
                     </Routes>
                 </div>
             </div>
