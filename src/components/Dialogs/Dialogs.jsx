@@ -6,6 +6,7 @@ function Dialogs(props){
     return (
         <div>
             Dialogs
+            tr[oitpoiupsddssddsdfsdfsdsdf
         </div>
     )
 }
