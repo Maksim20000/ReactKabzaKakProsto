@@ -11,7 +11,7 @@ class Navbar_header extends React.Component{
                         <NavLink to='/profile'>Profile</NavLink>
                     </div>
                     <div className={`${s.nav} ${s.item}`}>
-                        <NavLink to='/dialogs'>Message popoiigcffh</NavLink>
+                        <NavLink to='/dialogs'>Message galjksagh;lajkshsdfkl</NavLink>
                     </div>
                     <div className={s.item}>
                         <NavLink to='/new'>New</NavLink>
