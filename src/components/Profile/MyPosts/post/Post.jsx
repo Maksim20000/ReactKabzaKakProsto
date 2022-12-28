@@ -1,7 +1,5 @@
 import React from "react";
 import s from './Post.module.css'
-
-
 class Post extends React.Component{
     render(){
         return(
