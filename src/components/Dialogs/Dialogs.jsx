@@ -1,8 +1,8 @@
 import React from "react";
 import s from './Dialogs.module.css'
 // import {NavLink} from "react-router-dom";
-import {Message} from "./MessageDialog/MessageDialog";
-import {DialogItem} from "./Dialog/Dialog";
+import {Message} from "./MessageDialog/Message";
+import {DialogItem} from "./DialogItem/DialogItem";
 function Dialogs(){
     let dialogs = [
         {id: 1, name: 'Misha'},
