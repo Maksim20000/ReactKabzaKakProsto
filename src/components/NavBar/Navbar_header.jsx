@@ -5,12 +5,12 @@ import {NavLink} from "react-router-dom";
 class Navbar_header extends React.Component{
     render(){
         return(
-            <nav className={s.nav}>
+            <nav className={`${s.nav} ${s.white}`} >
                 <div>
                     <div className={s.item}>
                         <NavLink to='/profile'>Profile</NavLink>
                     </div>
-                    <div className={`${s.nav} ${s.item}`}>
+                    <div className={`${s.nav} ${s.item} ${s.white}`}>
                         <NavLink to='/dialogs'>Dialogs</NavLink>
                     </div>
                     <div className={s.item}>
