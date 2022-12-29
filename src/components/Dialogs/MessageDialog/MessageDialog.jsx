@@ -1,6 +1,6 @@
 import {Component} from "react";
 
-export class MessageDialog extends Component {
+export class Message extends Component {
     render() {
         return (
             <div>

@@ -11,6 +11,9 @@ function MyPosts(props) {
         {id: 5, message: 'Веб шторм топ', likesCount: 6798763},
         {id: 6, message: 'Веб шторм топ', likesCount: 0}
     ];
+
+    let postsElements = postData.map( p => <Post likesCount={p.likesCount} message={p.message} />);
+
     return (
         <div className={s.postsBlock}>
             <div>
@@ -25,13 +28,7 @@ function MyPosts(props) {
                 </div>
             </div>
             <div className={s.posts}>
-                <Post message={postData[0].message} num={postData[0].likesCount } />
-                <Post message={postData[1].message} num={postData[1].likesCount }/>
-                <Post message={postData[2].message} num={postData[2].likesCount }/>
-                <Post message={postData[3].message} num={postData[3].likesCount }/>
-                <Post message={postData[4].message} num={postData[4].likesCount }/>
-                <Post message={postData[5].message} num={postData[5].likesCount }/>
-
+                { postsElements }
             </div>
         </div>)
 }

@@ -9,7 +9,7 @@
     "n c c c"
     ;
     grid-template-rows: 60px 1fr;
-    grid-template-columns:  2fr 10fr;
+    grid-template-columns:  150px 10fr;
 }
 
 .app-wrapper-content{
