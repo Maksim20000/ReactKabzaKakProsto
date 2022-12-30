@@ -1,11 +1,17 @@
-import {Component} from "react";
+import React from 'react';
+import {InformationItem} from "./InformationItem/InformationItem";
 
-export class New extends Component {
-    render() {
-        return (
+function New(props) {
+
+    const informationData = props.state.map(i => <InformationItem id={i.id} name={i.name} message={i.message} />)
+
+    return (
+        <div>
             <div>
-                New
+                { informationData }
             </div>
-        );
-    }
+        </div>
+    )
 }
+
+export default New
