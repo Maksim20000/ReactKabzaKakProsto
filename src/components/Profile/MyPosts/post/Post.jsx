@@ -5,9 +5,9 @@ class Post extends React.Component{
         return(
             <div className={s.items}>
                 <img src="https://avatars.mds.yandex.net/i?id=930033d7168c8e425eb3cefda46a0d5817ba8dab-7111467-images-thumbs&n=13" />
-                <span className={s.centeAl}>{this.props.message} </span>
+                {this.props.message}
                 <div>
-                    <span>like {this.props.num}</span>
+                    <span>like {this.props.likesCount}</span>
                 </div>
                 
             </div>

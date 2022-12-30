@@ -1,16 +1,16 @@
 import React from "react";
-import s from './../Profile/Profile.module.css'
-import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
+import s from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
-class Profile extends React.Component{
-    render(){
-        return(
-            <div className={s.whiteBG}>
-                <ProfileInfo />
-                <MyPosts />
-            </div>
-        )
-        }
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
+
+function Profile(props) {
+    return (
+        <div className={s.whiteBG}>
+            <ProfileInfo/>
+            <MyPosts postData={props.postData}/>
+        </div>
+    )
+
 }
 
 export default Profile
