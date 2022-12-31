@@ -3,7 +3,7 @@ import s from './MyPosts.module.css'
 import Post from "./post/Post";
 
 function MyPosts(props) {
-    let postsElements = props.postData.map( p => <Post likesCount={p.likesCount} message={p.message} />);
+    let postsElements = props.postData.map( p => <Post likesCount={p.likesCount} message={p.message} img={p.img} name={p.name}/>);
 
     return (
         <div className={s.postsBlock}>

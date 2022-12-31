@@ -8,3 +8,16 @@
     border-radius: 50px;
 }
 
+.items{
+    display: flex;
+    border: black 2px solid;
+    border-radius: 20px;
+}
+
+.m20px{
+    margin: 20px 0px 20px 0px;
+}
+
+.m20px *{
+    align-content: center;
+}

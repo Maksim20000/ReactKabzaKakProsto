@@ -4,12 +4,11 @@ class Post extends React.Component{
     render(){
         return(
             <div className={s.items}>
-                <img src="https://avatars.mds.yandex.net/i?id=930033d7168c8e425eb3cefda46a0d5817ba8dab-7111467-images-thumbs&n=13" />
-                {this.props.message}
-                <div>
-                    <span>like {this.props.likesCount}</span>
-                </div>
-                
+                <div className={s.m20px}></div>
+                    <img src={this.props.img} />
+                    Сказал {this.props.name}:
+                    {this.props.message}
+                    <span>likes: {this.props.likesCount}</span>
             </div>
         )
     }    
