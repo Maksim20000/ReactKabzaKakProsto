@@ -7,8 +7,9 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Setting} from "./components/Setting/Setting";
 import {Music} from "./components/Music/Music";
 import {Login} from "./components/Login/Login";
-import Navbar_header from "./components/NavBar/Navbar_header";
 import New from "./components/New/New";
+import Navbar from "./components/NavBar/Navbar_header";
+import {Base} from "./components/Base/Base";
 
 
 function App(props) {
@@ -16,10 +17,11 @@ function App(props) {
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Navbar_header/>
+                <Navbar/>
                 <div className='app-wrapper-content' >
                     <Routes>
-                        <Route path="/profile" element = { <Profile state={props.state.profilePage}/> }/>
+                        <Route path='/' element={ <Base /> } />
+                        <Route path="/profile" element = { <Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
                         <Route path="/dialogs" element = { <Dialogs  state={props.state.dialogsPage} />}/>
                         <Route path="/new" element = { <New state={props.state.dialogsPage.dialogs} />} />
                         <Route path="/music" element = {<Music />} />

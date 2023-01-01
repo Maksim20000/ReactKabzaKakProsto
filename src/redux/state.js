@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../Render";
+
 let state = {
     dialogsPage: {
         dialogs: [
@@ -26,8 +28,23 @@ let state = {
             {name: 'Oleg',likesCount: 0, id: 4, message: 'lalalalala', img: 'https://avatars.mds.yandex.net/i?id=726d5d11739bfc0b7f37a25011227c141e9f583f-5177029-images-thumbs&n=13'},
             {name: 'Julia',likesCount:955, id: 5, message: 'GitHub top', img: 'https://e1.pngegg.com/pngimages/158/696/png-clipart-avengers-6-hq-yenilmezler-6-hq-marvel-studios-the-avengers-logo.png'},
             {name: 'Dimchk',likesCount:988563635, id: 6, message: 'Web storm toppp', img: 'https://i.pinimg.com/originals/bc/2e/64/bc2e64ba090bf73db4afe763ca3b9a54.jpg'},
-        ]
+        ],
+        newPostText: 'Привет'
     }
+}
+
+
+export let addPost = (postMessage) => {
+    debugger
+    let newPost = {
+        id: 5,
+        message: postMessage,
+        likesCount: 0,
+        img: 'https://avatars.mds.yandex.net/i?id=726d5',
+        name: 'Dimchk'
+    }
+    state.profilePage.postData.push(newPost)
+    rerenderEntireTree(state)
 }
 
 export default state

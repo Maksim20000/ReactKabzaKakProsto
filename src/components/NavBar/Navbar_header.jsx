@@ -3,7 +3,7 @@ import s from '../NavBar/Navbar.module.css'
 import {NavLink} from "react-router-dom";
 
 
-function Navbar_header(props) {
+function Navbar(props) {
 
 
     return (
@@ -33,4 +33,4 @@ function Navbar_header(props) {
 }
 
 
-export default Navbar_header
+export default Navbar
