@@ -1,4 +1,7 @@
-import {rerenderEntireTree} from "../Render";
+let rerenderEntireTree = () => {
+    console.log('rerenderEntireTree change');
+}
+
 
 let state = {
     dialogsPage: {
@@ -35,16 +38,19 @@ let state = {
 
 
 export let addPost = (postMessage) => {
-    debugger
     let newPost = {
         id: 5,
         message: postMessage,
-        likesCount: 0,
+        likesCount: 9,
         img: 'https://avatars.mds.yandex.net/i?id=726d5',
         name: 'Dimchk'
     }
     state.profilePage.postData.push(newPost)
-    rerenderEntireTree(state)
+    rerenderEntireTree()
+}
+
+export const subscribe = (observer) => {
+
 }
 
 export default state

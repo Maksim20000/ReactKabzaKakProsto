@@ -12,9 +12,7 @@ function MyPosts(props) {
         props.addPost(text)
     }
 
-    let addChangArea = () => {
 
-    })
 
     return (
         <div className={s.postsBlock}>
@@ -23,7 +21,7 @@ function MyPosts(props) {
             </div>
             <div>
                 <div>
-                    <textarea ref= { newPostElement } value = 'Прив' onChange={ props.newPostText } />
+                    <textarea ref= { newPostElement }/>
                 </div>
                 <div>
                     <button onClick={ addClick }>Add post</button>

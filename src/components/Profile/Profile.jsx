@@ -7,7 +7,10 @@ function Profile(props) {
     return (
         <div className={s.whiteBG}>
             <ProfileInfo/>
-            <MyPosts postData={props.state.postData}  addPost={props.addPost}/>
+            <MyPosts postData={props.state.postData}
+                     addPost={props.addPost}
+                     newPostText={props.newPostText}
+            />
         </div>
     )
 
