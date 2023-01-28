@@ -1,8 +1,3 @@
-let rerenderEntireTree = () => {
-    console.log('rerenderEntireTree change');
-}
-
-
 let state = {
     dialogsPage: {
         dialogs: [
@@ -35,22 +30,4 @@ let state = {
         newPostText: 'Привет'
     }
 }
-
-
-export let addPost = (postMessage) => {
-    let newPost = {
-        id: 5,
-        message: postMessage,
-        likesCount: 9,
-        img: 'https://avatars.mds.yandex.net/i?id=726d5',
-        name: 'Dimchk'
-    }
-    state.profilePage.postData.push(newPost)
-    rerenderEntireTree()
-}
-
-export const subscribe = (observer) => {
-
-}
-
 export default state

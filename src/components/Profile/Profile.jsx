@@ -8,7 +8,6 @@ function Profile(props) {
         <div className={s.whiteBG}>
             <ProfileInfo/>
             <MyPosts postData={props.state.postData}
-                     addPost={props.addPost}
                      newPostText={props.newPostText}
             />
         </div>

@@ -3,16 +3,21 @@ import s from './MyPosts.module.css'
 import Post from "./post/Post";
 
 function MyPosts(props) {
-    let postsElements = props.postData.map( p => <Post likesCount={p.likesCount} message={p.message} img={p.img} name={p.name}/>);
 
     let newPostElement = React.createRef();
 
-    let addClick = () => {
-        let text = newPostElement.current.value;
-        props.addPost(text)
+    const dialogsElements = props.postData.map((el) => <Post
+        name={el.name}
+        likesCount={el.likesCount}
+        img={el.img}
+        message={el.message}
+    />)
+
+    let addPost = () => {
+        debugger;
+        let text = newPostElement.current.value
+        alert(text)
     }
-
-
 
     return (
         <div className={s.postsBlock}>
@@ -21,14 +26,14 @@ function MyPosts(props) {
             </div>
             <div>
                 <div>
-                    <textarea ref= { newPostElement }/>
+                    <textarea ref={ newPostElement }/>
                 </div>
                 <div>
-                    <button onClick={ addClick }>Add post</button>
+                    <button onClick={ addPost }>Add post</button>
                 </div>
             </div>
             <div className={s.posts}>
-                { postsElements }
+                { dialogsElements }
             </div>
         </div>)
 }
