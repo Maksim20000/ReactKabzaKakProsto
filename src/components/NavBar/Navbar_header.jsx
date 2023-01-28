@@ -25,6 +25,9 @@ function Navbar(props) {
                 <div>
                     <NavLink to='/setting'>Setting</NavLink>
                 </div>
+                <div>
+                    <NavLink to='/register'>Register</NavLink>
+                </div>
 
             </div>
         </nav>

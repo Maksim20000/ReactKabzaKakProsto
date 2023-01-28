@@ -10,6 +10,7 @@ import {Login} from "./components/Login/Login";
 import New from "./components/New/New";
 import Navbar from "./components/NavBar/Navbar_header";
 import {Base} from "./components/Base/Base";
+import {Register} from "./components/Register/Register";
 
 
 function App(props) {
@@ -32,6 +33,7 @@ function App(props) {
                         <Route path="/music" element = {<Music />} />
                         <Route path="/setting" element = {<Setting />}/>
                         <Route path='/login' element={<Login/>} />
+                        <Route path='/register' element={<Register />}/>
                     </Routes>
                 </div>
             </div>
