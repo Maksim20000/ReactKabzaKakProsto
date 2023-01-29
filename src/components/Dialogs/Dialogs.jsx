@@ -8,10 +8,11 @@ function Dialogs(props){
     let MessagesElements = props.state.messages.map( m => <Message message= {m.message} /> )
 
 
-    let dialogRef = React.createRef();
-    let addMessage = () => {
-        let textRef = dialogRef.current.value
-        alert(textRef)
+    let refTextArea = React.createRef();
+
+    let onClickButtonDialogs = () => {
+        let text = refTextArea.current.value
+        alert(text)
     }
 
     return (
@@ -21,8 +22,8 @@ function Dialogs(props){
             </div>
             <div className={s.messages}>
                 { MessagesElements }
-                <textarea ref={ dialogRef }></textarea>
-                <button onClick={ addMessage }>Add message</button>
+                <textarea ref={ refTextArea }/>
+                <button onClick={ onClickButtonDialogs }>Add post</button>
             </div>
         </div>
     )

@@ -13,6 +13,8 @@ import {Base} from "./components/Base/Base";
 import {Register} from "./components/Register/Register";
 
 
+le
+
 function App(props) {
     return(
         <BrowserRouter>
@@ -23,8 +25,8 @@ function App(props) {
                     <Routes>
                         <Route path='/' element={ <Base /> } />
                         <Route path="/profile" element = { <Profile state={props.state.profilePage}
-                                                                    addPost={props.addPost}
                                                                     newPostText={props.newPostText}
+                                                                    addPost = {props.addPost}
 
                         />}/>
 

@@ -13,10 +13,11 @@ function MyPosts(props) {
         message={el.message}
     />)
 
+    let addPostFun = props.addPost
     let addPost = () => {
         debugger;
         let text = newPostElement.current.value
-        alert(text)
+        addPostFun(text);
     }
 
     return (
