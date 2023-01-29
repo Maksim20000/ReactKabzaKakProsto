@@ -13,11 +13,10 @@ function MyPosts(props) {
         message={el.message}
     />)
 
-    let addPostFun = props.addPost
     let addPost = () => {
         debugger;
         let text = newPostElement.current.value
-        addPostFun(text);
+        props.addPost(text);
     }
 
     return (
@@ -27,10 +26,10 @@ function MyPosts(props) {
             </div>
             <div>
                 <div>
-                    <textarea ref={ newPostElement }/>
+                    <textarea onChange={addPost} ref={ newPostElement }/>
                 </div>
                 <div>
-                    <button onClick={ addPost }>Add post</button>
+                    <button>Add post</button>
                 </div>
             </div>
             <div className={s.posts}>
