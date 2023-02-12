@@ -22,7 +22,7 @@ function Dialogs(props){
             </div>
             <div className={s.messages}>
                 { MessagesElements }
-                <textarea ref={ refTextArea }/>
+                <textarea ref={ refTextArea } value='it'/>
                 <button onClick={ onClickButtonDialogs }>Add post</button>
             </div>
         </div>

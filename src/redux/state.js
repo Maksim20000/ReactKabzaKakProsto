@@ -29,7 +29,7 @@ let state = {
             {name: 'Julia',likesCount:955, id: 5, message: 'GitHub top', img: 'https://e1.pngegg.com/pngimages/158/696/png-clipart-avengers-6-hq-yenilmezler-6-hq-marvel-studios-the-avengers-logo.png'},
             {name: 'Dimchk',likesCount:988563635, id: 6, message: 'Web storm toppp', img: 'https://i.pinimg.com/originals/bc/2e/64/bc2e64ba090bf73db4afe763ca3b9a54.jpg'},
         ],
-        newPostText: 'Привет',
+        newPostText: 'Привет'
     }
 }
 
@@ -43,6 +43,13 @@ export let addPost = (postMessage) => {
         img: 'https://avatars.mds.yandex.net/i?id=8e1656b53d712f3d1d39bc3ecb78c46e4d0c80fc-8196573-images-thumbs&n=13'
     };
     state.profilePage.postData.push(newPost)
+    Render(state)
+}
+
+export let changeNewPost = (value) => {
+    debugger
+
+    state.profilePage.newPostText.push(value)
     Render(state)
 }
 

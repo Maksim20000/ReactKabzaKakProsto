@@ -13,11 +13,18 @@ function MyPosts(props) {
         message={el.message}
     />)
 
-    let addPost = () => {
-        debugger;
-        let text = newPostElement.current.value
-        props.addPost(text);
+
+    let addPastChange = () => {
+        debugger
+        let textArea = newPostElement.current.value
+        props.changeNewPost(textArea)
     }
+
+    // let addPost = () => {
+    //     let text = newPostElement.current.value
+    //     props.addPost(text);
+    // }
+
 
     return (
         <div className={s.postsBlock}>
@@ -26,7 +33,7 @@ function MyPosts(props) {
             </div>
             <div>
                 <div>
-                    <textarea onChange={addPost} ref={ newPostElement }/>
+                    <textarea onChange={addPastChange} ref={ newPostElement } value={props.valueArea}/>
                 </div>
                 <div>
                     <button>Add post</button>
