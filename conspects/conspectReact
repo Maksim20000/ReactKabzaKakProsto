@@ -1,0 +1,91 @@
+            Конспект, который на остоновках
+
+Важно в общем:
+    1) Компоненты всегда должны писаться с большой буквы
+
+
+1) Компонента - функция, возврашающая jsx разметку ( Тэг)
+    const exampleKomponent = () => {
+        <h1>Привет JSX разметка !</h1>
+    }
+
+    ИЛИ
+
+    function exmpleFun() {
+        return(
+            <div>
+                Привет мир
+            </div>
+        )
+    }
+
+    Виды функциональных компонентов:
+        1) Тупая (dumb)
+        2) Без состояния (stateless)
+        3) презентационная (presentational)
+
+
+    ВАЖНО:
+    1.1 Функция не может возварщать 2 тега !
+
+2) props - данные, которые приходят из тэга в компонент
+
+    <exampleKomponent name='Петя' id=5 />
+    const exampleKomponent = (props) => {
+        <h1>{props.name}, {props.id}</h1>
+    }
+
+3) NodeJS - аналог браузера
+
+4) SPA (Single Page Aplecation ) - всего 1 HTML
+    приходят только AJAX запросы
+
+5) map - функция массива
+    const dialogsElements = props.postData.map((el) => <Post
+            name={el.name}
+            likesCount={el.likesCount}
+    />)
+
+6) Route - путь на сайте
+    Как использовать:
+        1) <BrowserRouter> - весь сайт обернуть в этот тэг
+        2) потом Navbar обернуть в <Routes>
+        3) после мы используем:
+                <Route path="/dialogs"
+                element = { <Dialogs  state={props.state.dialogsPage} />}/>
+
+        4) В navBar :
+            <div className={s.item}>
+                 <NavLink to='/profile'>Profile</NavLink>
+            </div>
+
+7) UI - React
+   BLL - Redax
+
+8) Импорты бывают:
+    8.1 export default App - В import нужно вводить App
+    8.2 export function Lalalal - в import вводим { Lalalaa }
+
+
+9) CSS :
+   чтобы использовать файл только в 1 файле необходимо:
+        1) В файл css добавить style.module.css
+        2) чтобы призвать css модуль необходимо написать:
+            import s from './Profile.module.css'
+        3) обращаться к нему className={s.whiteBG}
+
+10) Чтобы создать переменную мы исользуем команду:
+      let newPostElement = React.createRef();
+      <textarea ref={ refTextArea } value='it'/>
+
+      let onClickButtonDialogs = () => {
+              let text = refTextArea.current.value
+              alert(text)
+      }
+
+
+
+
+
+
+
