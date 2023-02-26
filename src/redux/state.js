@@ -17,7 +17,8 @@ let state = {
             {id: 4, message: 'lalalalala'},
             {id: 5, message: 'GitHub top'},
             {id: 6, message: 'Web storm toppp'},
-        ]
+        ],
+        textMessegeDialog: 'Привет'
     },
 
     profilePage: {
@@ -34,6 +35,24 @@ let state = {
 }
 
 window.state = state
+
+export let dialogsChangeText = ( text ) => {
+    debugger
+    state.dialogsPage.textMessegeDialog = text;
+    Render(state)
+}
+
+export let onClickDialogsText = () => {
+    debugger
+    let NewPost = {
+        id: 1,
+        name: state.dialogsPage.textMessegeDialog,
+        message: 'Hi'}
+    state.dialogsPage.dialogs.push(NewPost)
+    state.dialogsPage.textMessegeDialog = ''
+    Render(state)
+}
+
 
 export let updateNewText = (newText) => {
     state.profilePage.newPostText = newText

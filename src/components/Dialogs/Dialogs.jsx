@@ -4,16 +4,22 @@ import s from './Dialogs.module.css'
 import {Message} from "./MessageDialog/Message";
 import {DialogItem} from "./DialogItem/DialogItem";
 function Dialogs(props){
+
+    debugger
     let dialogsElements = props.state.dialogs.map( d => <DialogItem id={d.id} name={d.name} /> );
     let MessagesElements = props.state.messages.map( m => <Message message= {m.message} /> )
 
+    let refReactDialogs = React.createRef()
 
-    let refTextArea = React.createRef();
-
-    let onClickButtonDialogs = () => {
-        let text = refTextArea.current.value
-        alert(text)
+    let ChangeStateInDialog = () => {
+        let text = refReactDialogs.current.value
+        props.dialogsChangeText(text)
     }
+
+    let onClickDialogsTextBtn = () => {
+        props.onClickDialogsText()
+    }
+
 
     return (
         <div className={s.dialogs}>
@@ -22,8 +28,8 @@ function Dialogs(props){
             </div>
             <div className={s.messages}>
                 { MessagesElements }
-                <textarea ref={ refTextArea } value='it'/>
-                <button onClick={ onClickButtonDialogs }>Add post</button>
+                <textarea ref={ refReactDialogs } onChange={ ChangeStateInDialog } value={ props.state.textMessegeDialog }/>
+                <button onClick={onClickDialogsTextBtn}>Add post</button>
             </div>
         </div>
     )

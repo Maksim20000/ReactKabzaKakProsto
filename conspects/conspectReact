@@ -91,6 +91,10 @@
 12) window.popa = state;
     Прикольная команда для консоли, когда popa - что вводится в консоли
 
+13) let textArea = newPostElement.current.value - раскрывает ref в функции реакт
+
+
+
 
 
 

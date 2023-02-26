@@ -1,5 +1,5 @@
 import React from "react";
-import {addPost, updateNewText} from './redux/state'
+import {addPost, dialogsChangeText, onClickDialogsText, updateNewText} from './redux/state'
 import ReactDOM from 'react-dom'
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
@@ -10,6 +10,9 @@ export let Render = (state) => {
             <App state={state}
                  addPost={addPost}
                  updateNewText = {updateNewText}
+                 dialogsChangeText={dialogsChangeText}
+                 onClickDialogsText = {onClickDialogsText}
+
             />
         </BrowserRouter>, document.getElementById('root')
     )

@@ -29,7 +29,10 @@ function App(props) {
 
                         />}/>
 
-                        <Route path="/dialogs" element = { <Dialogs  state={props.state.dialogsPage} />}/>
+                        <Route path="/dialogs" element = { <Dialogs  state={props.state.dialogsPage}
+                                                                     dialogsChangeText={props.dialogsChangeText}
+                                                                     onClickDialogsText={props.onClickDialogsText}
+                        />}/>
                         <Route path="/new" element = { <New state={props.state.dialogsPage.dialogs} />} />
                         <Route path="/music" element = {<Music />} />
                         <Route path="/setting" element = {<Setting />}/>
