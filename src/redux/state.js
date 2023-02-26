@@ -33,23 +33,23 @@ let state = {
     }
 }
 
+window.state = state
 
-export let addPost = (postMessage) => {
+export let updateNewText = (newText) => {
+    state.profilePage.newPostText = newText
+    Render(state)
+}
+
+export let addPost = () => {
     let newPost = {
         id: 5,
-        message:postMessage,
+        message: state.profilePage.newPostText,
         likesCount: 5545454,
         name: 'Андрей',
         img: 'https://avatars.mds.yandex.net/i?id=8e1656b53d712f3d1d39bc3ecb78c46e4d0c80fc-8196573-images-thumbs&n=13'
     };
     state.profilePage.postData.push(newPost)
-    Render(state)
-}
-
-export let changeNewPost = (value) => {
-    debugger
-
-    state.profilePage.newPostText.push(value)
+    state.profilePage.newPostText = ''
     Render(state)
 }
 

@@ -25,7 +25,7 @@ function App(props) {
                                                                     valueArea={props.state.profilePage.newPostText}
                                                                     newPostText={props.newPostText}
                                                                     addPost = {props.addPost}
-                                                                    changeNewPost = {props.changeNewPost}
+                                                                    updateNewText = {props.updateNewText}
 
                         />}/>
 

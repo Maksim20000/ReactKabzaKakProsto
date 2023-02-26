@@ -83,8 +83,13 @@
               alert(text)
       }
 
+11) state.profilePage.postData.push(newPost) - делает новый элемента в массиве, нельзя для
+    полного замещения файла
 
+    state.profilePage.newPostText = newText - если необходимо полностью заместить файл
 
+12) window.popa = state;
+    Прикольная команда для консоли, когда popa - что вводится в консоли
 
 
 

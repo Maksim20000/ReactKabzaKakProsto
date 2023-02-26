@@ -15,15 +15,13 @@ function MyPosts(props) {
 
 
     let addPastChange = () => {
-        debugger
         let textArea = newPostElement.current.value
-        props.changeNewPost(textArea)
+        props.updateNewText(textArea)
     }
 
-    // let addPost = () => {
-    //     let text = newPostElement.current.value
-    //     props.addPost(text);
-    // }
+    let addPost = () => {
+        props.addPost();
+    }
 
 
     return (
@@ -36,7 +34,7 @@ function MyPosts(props) {
                     <textarea onChange={addPastChange} ref={ newPostElement } value={props.valueArea}/>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button onClick={addPost}>Add post</button>
                 </div>
             </div>
             <div className={s.posts}>
