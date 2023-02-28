@@ -93,6 +93,12 @@
 
 13) let textArea = newPostElement.current.value - раскрывает ref в функции реакт
 
+14) можно выпрыгивать из функции и присваивать другой функции другое значение
+    export const subscribe = (observer) => {
+        Render = observer - (observer - паттерн почитать = publisher-subscribe = addEventListener)
+    }
+
+
 
 
 

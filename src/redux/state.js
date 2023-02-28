@@ -1,4 +1,6 @@
-import {Render} from "../Render";
+let Render = () => {
+
+}
 
 let state = {
     dialogsPage: {
@@ -36,6 +38,11 @@ let state = {
 
 window.state = state
 
+
+export const subscribe = (observer) => {
+    Render = observer
+}
+
 export let dialogsChangeText = ( text ) => {
     debugger
     state.dialogsPage.textMessegeDialog = text;
@@ -60,6 +67,7 @@ export let updateNewText = (newText) => {
 }
 
 export let addPost = () => {
+
     let newPost = {
         id: 5,
         message: state.profilePage.newPostText,
