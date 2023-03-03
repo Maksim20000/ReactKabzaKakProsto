@@ -1,5 +1,5 @@
 чтобы создать репозиторий на git hub page 
-1) сменить ник репозитория на Maxim2000.github.io
+1) сменить ник репозитория на Maksim2000.github.io
 2) создать build 
     npm run build
 
