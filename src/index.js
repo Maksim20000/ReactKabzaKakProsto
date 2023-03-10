@@ -1,7 +1,6 @@
 import React from "react";
-import {addPost, dialogsChangeText, onClickDialogsText, subscribe, updateNewText} from './redux/state'
 import ReactDOM from 'react-dom'
-import state from './redux/state'
+import store from './redux/state'
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 
@@ -9,18 +8,18 @@ let Render = (state) => {
     ReactDOM.render(
         <BrowserRouter>
             <App state={state}
-                 addPost={addPost}
-                 updateNewText = {updateNewText}
-                 dialogsChangeText={dialogsChangeText}
-                 onClickDialogsText = {onClickDialogsText}
+                 addPost={store.addPost.bind(store)}
+                 updateNewText = {store.updateNewText.bind(store)}
+                 dialogsChangeText={store.dialogsChangeText.bind(store)}
+                 onClickDialogsText = {store.onClickDialogsText.bind(store)}
 
             />
         </BrowserRouter>, document.getElementById('root')
     )
 }
 
-Render(state)
+Render(store.getState())
 
-subscribe(Render)
+store.subscribe(Render)
 
 

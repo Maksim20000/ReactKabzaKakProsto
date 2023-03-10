@@ -3,7 +3,7 @@ import s from './MyPosts.module.css'
 import Post from "./post/Post";
 
 function MyPosts(props) {
-
+    debugger
     let newPostElement = React.createRef();
 
     const dialogsElements = props.postData.map((el) => <Post
