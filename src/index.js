@@ -8,8 +8,9 @@ let Render = (state) => {
     ReactDOM.render(
         <BrowserRouter>
             <App state={state}
-                 addPost={store.addPost.bind(store)}
-                 updateNewText = {store.updateNewText.bind(store)}
+                 // addPost={store.addPost.bind(store)}
+                 dispatch = {store.dispatch.bind(store)}
+                 // updateNewText = {store.updateNewText.bind(store)}
                  dialogsChangeText={store.dialogsChangeText.bind(store)}
                  onClickDialogsText = {store.onClickDialogsText.bind(store)}
 

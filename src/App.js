@@ -24,6 +24,7 @@ function App(props) {
                         <Route path="/profile" element = { <Profile state={props.state.profilePage}
                                                                     valueArea={props.state.profilePage.newPostText}
                                                                     newPostText={props.newPostText}
+                                                                    dispatch = {props.dispatch}
                                                                     addPost = {props.addPost}
                                                                     updateNewText = {props.updateNewText}
 

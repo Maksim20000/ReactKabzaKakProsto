@@ -10,10 +10,11 @@ function Profile(props) {
 
             <ProfileInfo/>
             <MyPosts postData={props.state.postData}
+                     dispatch = {props.dispatch}
                      newPostText={props.newPostText}
-                     addPost = {props.addPost}
+                     // addPost = {props.addPost}
                      valueArea={props.valueArea}
-                     updateNewText ={props.updateNewText}
+                     // updateNewText ={props.updateNewText}
             />
         </div>
     )

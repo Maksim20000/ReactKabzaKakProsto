@@ -3,7 +3,7 @@ import s from './MyPosts.module.css'
 import Post from "./post/Post";
 
 function MyPosts(props) {
-    debugger
+
     let newPostElement = React.createRef();
 
     const dialogsElements = props.postData.map((el) => <Post
@@ -16,11 +16,13 @@ function MyPosts(props) {
 
     let addPastChange = () => {
         let textArea = newPostElement.current.value
-        props.updateNewText(textArea)
+        let dispatch = { type: 'UPDATE-NEW-POST-TEXT', text: textArea }
+        props.dispatch(dispatch)
     }
 
     let addPost = () => {
-        props.addPost();
+        let dispatch = { type: 'ADD-POST'}
+        props.dispatch(dispatch)
     }
 
 

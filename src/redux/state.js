@@ -39,18 +39,39 @@ let store = {
     _callSubscribe(){
             console.log('Привет')
     },
-    addPost(){
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 5545454,
-            name: 'Андрей',
-            img: 'https://avatars.mds.yandex.net/i?id=8e1656b53d712f3d1d39bc3ecb78c46e4d0c80fc-8196573-images-thumbs&n=13'
-        };
-        this._state.profilePage.postData.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._callSubscribe(this._state)
+    // addPost(){
+    //     let newPost = {
+    //         id: 5,
+    //         message: this._state.profilePage.newPostText,
+    //         likesCount: 5545454,
+    //         name: 'Андрей',
+    //         img: 'https://avatars.mds.yandex.net/i?id=8e1656b53d712f3d1d39bc3ecb78c46e4d0c80fc-8196573-images-thumbs&n=13'
+    //     };
+    //     this._state.profilePage.postData.push(newPost)
+    //     this._state.profilePage.newPostText = ''
+    //     this._callSubscribe(this._state)
+    // },
+
+    dispatch(action){
+        if(action.type === 'ADD-POST'){
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                likesCount: 5545454,
+                name: 'Андрей',
+                img: 'https://avatars.mds.yandex.net/i?id=8e1656b53d712f3d1d39bc3ecb78c46e4d0c80fc-8196573-images-thumbs&n=13'
+            };
+            this._state.profilePage.postData.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._callSubscribe(this._state)
+        } else if(action.type === 'UPDATE-NEW-POST-TEXT'){
+            this._state.profilePage.newPostText = action.text
+            this._callSubscribe(this._state)
+        }
+
+
     },
+
     subscribe(observer){
         this._callSubscribe = observer
     },
@@ -68,12 +89,12 @@ let store = {
         this._state.dialogsPage.dialogs.push(NewPost)
         this._state.dialogsPage.textMessegeDialog = ''
         this._callSubscribe(this._state)
-    },
-    updateNewText(newText){
-
-        this._state.profilePage.newPostText = newText
-        this._callSubscribe(this._state)
     }
+    // updateNewText(newText){
+    //
+    //     this._state.profilePage.newPostText = newText
+    //     this._callSubscribe(this._state)
+    // }
 
 }
 
