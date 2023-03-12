@@ -1,6 +1,11 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./post/Post";
+import {addPostActionCreater, updateNewPostTextActionCreater} from "../../../redux/state";
+
+
+
+
 
 function MyPosts(props) {
 
@@ -16,13 +21,11 @@ function MyPosts(props) {
 
     let addPastChange = () => {
         let textArea = newPostElement.current.value
-        let dispatch = { type: 'UPDATE-NEW-POST-TEXT', text: textArea }
-        props.dispatch(dispatch)
+        props.dispatch(updateNewPostTextActionCreater(textArea))
     }
 
     let addPost = () => {
-        let dispatch = { type: 'ADD-POST'}
-        props.dispatch(dispatch)
+        props.dispatch(addPostActionCreater())
     }
 
 

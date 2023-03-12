@@ -3,8 +3,9 @@ import s from './Dialogs.module.css'
 // import {NavLink} from "react-router-dom";
 import {Message} from "./MessageDialog/Message";
 import {DialogItem} from "./DialogItem/DialogItem";
-function Dialogs(props){
+import {CreaterDialogsChangeText, CreaterDialogsClick} from "../../redux/state";
 
+function Dialogs(props){
     debugger
     let dialogsElements = props.state.dialogs.map( d => <DialogItem id={d.id} name={d.name} /> );
     let MessagesElements = props.state.messages.map( m => <Message message= {m.message} /> )
@@ -13,11 +14,11 @@ function Dialogs(props){
 
     let ChangeStateInDialog = () => {
         let text = refReactDialogs.current.value
-        props.dialogsChangeText(text)
+        props.dispatch(CreaterDialogsChangeText(text))
     }
 
     let onClickDialogsTextBtn = () => {
-        props.onClickDialogsText()
+        props.dispatch(CreaterDialogsClick())
     }
 
 

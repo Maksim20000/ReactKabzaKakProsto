@@ -14,7 +14,9 @@ import {Register} from "./components/Register/Register";
 
 
 function App(props) {
+
     return(
+
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
@@ -31,8 +33,7 @@ function App(props) {
                         />}/>
 
                         <Route path="/dialogs" element = { <Dialogs  state={props.state.dialogsPage}
-                                                                     dialogsChangeText={props.dialogsChangeText}
-                                                                     onClickDialogsText={props.onClickDialogsText}
+                                                                     dispatch = { props.dispatch }
                         />}/>
                         <Route path="/new" element = { <New state={props.state.dialogsPage.dialogs} />} />
                         <Route path="/music" element = {<Music />} />

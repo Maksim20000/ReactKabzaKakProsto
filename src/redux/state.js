@@ -1,7 +1,12 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const DIALOGS_CHANGE_TEXT = 'DIALOGS_CHANGE_TEXT'
+
+const ON_DIALOGS_TEXT = 'ON_DIALOGS_TEXT'
+
 let store = {
     _state: {
         dialogsPage: {
-
                 dialogs: [
                 {id: 1, name: 'Misha', message: 'Hi'},
                 {id: 2, name: 'Anton', message: 'Push'},
@@ -53,7 +58,7 @@ let store = {
     // },
 
     dispatch(action){
-        if(action.type === 'ADD-POST'){
+        if(action.type === ADD_POST){
             let newPost = {
                 id: 5,
                 message: this._state.profilePage.newPostText,
@@ -64,32 +69,43 @@ let store = {
             this._state.profilePage.postData.push(newPost)
             this._state.profilePage.newPostText = ''
             this._callSubscribe(this._state)
-        } else if(action.type === 'UPDATE-NEW-POST-TEXT'){
+        } else if(action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.text
             this._callSubscribe(this._state)
-        }
 
+        }else if(action.type === DIALOGS_CHANGE_TEXT) {
+            this._state.dialogsPage.textMessegeDialog = action.text;
+            this._callSubscribe(this._state)
+        }else if(action.type === ON_DIALOGS_TEXT){
+            let NewPost = {
+                id: 1,
+                name: this._state.dialogsPage.textMessegeDialog,
+                message: 'Hi'}
+            this._state.dialogsPage.dialogs.push(NewPost)
+            this._state.dialogsPage.textMessegeDialog = ''
+            this._callSubscribe(this._state)
+        }
 
     },
 
     subscribe(observer){
         this._callSubscribe = observer
     },
-    dialogsChangeText(text){
-        debugger
-        this._state.dialogsPage.textMessegeDialog = text;
-        this._callSubscribe(this._state)
-    },
-    onClickDialogsText(){
-        debugger
-        let NewPost = {
-            id: 1,
-            name: this._state.dialogsPage.textMessegeDialog,
-            message: 'Hi'}
-        this._state.dialogsPage.dialogs.push(NewPost)
-        this._state.dialogsPage.textMessegeDialog = ''
-        this._callSubscribe(this._state)
-    }
+    // dialogsChangeText(text){
+    //     debugger
+    //     this._state.dialogsPage.textMessegeDialog = text;
+    //     this._callSubscribe(this._state)
+    // },
+    // onClickDialogsText(){
+    //     debugger
+    //     let NewPost = {
+    //         id: 1,
+    //         name: this._state.dialogsPage.textMessegeDialog,
+    //         message: 'Hi'}
+    //     this._state.dialogsPage.dialogs.push(NewPost)
+    //     this._state.dialogsPage.textMessegeDialog = ''
+    //     this._callSubscribe(this._state)
+    // }
     // updateNewText(newText){
     //
     //     this._state.profilePage.newPostText = newText
@@ -97,6 +113,33 @@ let store = {
     // }
 
 }
+
+export const CreaterDialogsChangeText = (text) => {
+    return {
+        type: DIALOGS_CHANGE_TEXT,
+        text: text
+    }
+}
+
+export  const CreaterDialogsClick = () => {
+    return{
+        type: ON_DIALOGS_TEXT
+    }
+}
+
+export const addPostActionCreater = () => {
+    return {
+        type: ADD_POST
+    }
+}
+
+export const updateNewPostTextActionCreater = (textArea) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        text: textArea
+    }
+}
+
 
 window.store = store
 export default store
