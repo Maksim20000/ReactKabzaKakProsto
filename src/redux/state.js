@@ -1,8 +1,8 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const DIALOGS_CHANGE_TEXT = 'DIALOGS_CHANGE_TEXT'
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
+const SENT_MESSAGE = 'SENT_MESSAGE'
 
-const ON_DIALOGS_TEXT = 'ON_DIALOGS_TEXT'
 
 let store = {
     _state: {
@@ -23,7 +23,7 @@ let store = {
                 {id: 5, message: 'GitHub top'},
                 {id: 6, message: 'Web storm toppp'},
             ],
-            textMessegeDialog: 'Привет'
+            newMessageBody: 'Привет228'
         },
 
         profilePage: {
@@ -44,20 +44,9 @@ let store = {
     _callSubscribe(){
             console.log('Привет')
     },
-    // addPost(){
-    //     let newPost = {
-    //         id: 5,
-    //         message: this._state.profilePage.newPostText,
-    //         likesCount: 5545454,
-    //         name: 'Андрей',
-    //         img: 'https://avatars.mds.yandex.net/i?id=8e1656b53d712f3d1d39bc3ecb78c46e4d0c80fc-8196573-images-thumbs&n=13'
-    //     };
-    //     this._state.profilePage.postData.push(newPost)
-    //     this._state.profilePage.newPostText = ''
-    //     this._callSubscribe(this._state)
-    // },
 
     dispatch(action){
+        debugger
         if(action.type === ADD_POST){
             let newPost = {
                 id: 5,
@@ -72,60 +61,50 @@ let store = {
         } else if(action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.text
             this._callSubscribe(this._state)
+        }
 
-        }else if(action.type === DIALOGS_CHANGE_TEXT) {
-            this._state.dialogsPage.textMessegeDialog = action.text;
+        // работает
+        else if(action.type === UPDATE_NEW_MESSAGE_BODY){
+            this._state.dialogsPage.newMessageBody = action.body
             this._callSubscribe(this._state)
-        }else if(action.type === ON_DIALOGS_TEXT){
-            let NewPost = {
-                id: 1,
-                name: this._state.dialogsPage.textMessegeDialog,
-                message: 'Hi'}
-            this._state.dialogsPage.dialogs.push(NewPost)
-            this._state.dialogsPage.textMessegeDialog = ''
+
+        }else if(action.type === SENT_MESSAGE){
+            debugger
+            let pushElement = {
+                id: 7,
+                message: this._state.dialogsPage.newMessageBody
+            }
+            this._state.dialogsPage.messages.push(pushElement)
+            this._state.dialogsPage.newMessageBody = ''
             this._callSubscribe(this._state)
         }
 
     },
-
     subscribe(observer){
         this._callSubscribe = observer
-    },
-    // dialogsChangeText(text){
-    //     debugger
-    //     this._state.dialogsPage.textMessegeDialog = text;
-    //     this._callSubscribe(this._state)
-    // },
-    // onClickDialogsText(){
-    //     debugger
-    //     let NewPost = {
-    //         id: 1,
-    //         name: this._state.dialogsPage.textMessegeDialog,
-    //         message: 'Hi'}
-    //     this._state.dialogsPage.dialogs.push(NewPost)
-    //     this._state.dialogsPage.textMessegeDialog = ''
-    //     this._callSubscribe(this._state)
-    // }
-    // updateNewText(newText){
-    //
-    //     this._state.profilePage.newPostText = newText
-    //     this._callSubscribe(this._state)
-    // }
-
+    }
 }
 
-export const CreaterDialogsChangeText = (text) => {
+
+
+export let sendMessageCreater = () => {
     return {
-        type: DIALOGS_CHANGE_TEXT,
-        text: text
+        type: SENT_MESSAGE,
+        text: 'лалала'
     }
 }
 
-export  const CreaterDialogsClick = () => {
-    return{
-        type: ON_DIALOGS_TEXT
+export let updateNewMessageBodyCreater = (body) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_BODY,
+        body: body
     }
 }
+
+
+
+
+
 
 export const addPostActionCreater = () => {
     return {

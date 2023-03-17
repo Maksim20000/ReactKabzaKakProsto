@@ -1,26 +1,26 @@
-import React from "react";
+import React, {createRef} from "react";
 import s from './Dialogs.module.css'
 // import {NavLink} from "react-router-dom";
 import {Message} from "./MessageDialog/Message";
 import {DialogItem} from "./DialogItem/DialogItem";
-import {CreaterDialogsChangeText, CreaterDialogsClick} from "../../redux/state";
+import {sendMessageCreater, updateNewMessageBodyCreater} from "../../redux/state";
 
 function Dialogs(props){
-    debugger
-    let dialogsElements = props.state.dialogs.map( d => <DialogItem id={d.id} name={d.name} /> );
-    let MessagesElements = props.state.messages.map( m => <Message message= {m.message} /> )
+    let state = props.store.getState().dialogsPage
 
-    let refReactDialogs = React.createRef()
+    let dialogsElements = state.dialogs.map( d => <DialogItem id={d.id} name={d.name} /> );
+    let MessagesElements = state.messages.map( m => <Message message= {m.message} /> )
 
-    let ChangeStateInDialog = () => {
-        let text = refReactDialogs.current.value
-        props.dispatch(CreaterDialogsChangeText(text))
+    let refReact = React.createRef()
+
+    let onSendMessageClick = () => {
+        props.store.dispatch(sendMessageCreater())
     }
 
-    let onClickDialogsTextBtn = () => {
-        props.dispatch(CreaterDialogsClick())
+    let onNewMessageChange = ( event ) => {
+        let body = refReact.current.value
+        props.store.dispatch(updateNewMessageBodyCreater(body))
     }
-
 
     return (
         <div className={s.dialogs}>
@@ -28,9 +28,15 @@ function Dialogs(props){
                 { dialogsElements }
             </div>
             <div className={s.messages}>
-                { MessagesElements }
-                <textarea ref={ refReactDialogs } onChange={ ChangeStateInDialog } value={ props.state.textMessegeDialog }/>
-                <button onClick={onClickDialogsTextBtn}>Add post</button>
+                <div>{MessagesElements}</div>
+                <div>
+                    <div><textarea
+                        onChange={ onNewMessageChange }
+                        value={ state.newMessageBody }
+                        ref = { refReact}
+                        placeholder='Нажмин на меня!'></textarea></div>
+                    <div><button onClick={ onSendMessageClick }>Кнопка</button></div>
+                </div>
             </div>
         </div>
     )

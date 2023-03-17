@@ -32,8 +32,7 @@ function App(props) {
 
                         />}/>
 
-                        <Route path="/dialogs" element = { <Dialogs  state={props.state.dialogsPage}
-                                                                     dispatch = { props.dispatch }
+                        <Route path="/dialogs" element = { <Dialogs store = {props.store}
                         />}/>
                         <Route path="/new" element = { <New state={props.state.dialogsPage.dialogs} />} />
                         <Route path="/music" element = {<Music />} />

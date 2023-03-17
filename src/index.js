@@ -9,9 +9,8 @@ let Render = (state) => {
     ReactDOM.render(
         <BrowserRouter>
             <App state={state}
-                 // addPost={store.addPost.bind(store)}
                  dispatch = {store.dispatch.bind(store)}
-                 // updateNewText = {store.updateNewText.bind(store)}
+                 store = {store}
             />
         </BrowserRouter>, document.getElementById('root')
     )
