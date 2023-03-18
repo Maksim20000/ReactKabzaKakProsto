@@ -1,7 +1,5 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
-const SENT_MESSAGE = 'SENT_MESSAGE'
+import DialogsRedusor from "./reducers/Dialogs-redusor";
+import ProfileReducer from "./reducers/Profile-reducer";
 
 
 let store = {
@@ -45,79 +43,21 @@ let store = {
             console.log('Привет')
     },
 
-    dispatch(action){
-        debugger
-        if(action.type === ADD_POST){
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 5545454,
-                name: 'Андрей',
-                img: 'https://avatars.mds.yandex.net/i?id=8e1656b53d712f3d1d39bc3ecb78c46e4d0c80fc-8196573-images-thumbs&n=13'
-            };
-            this._state.profilePage.postData.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._callSubscribe(this._state)
-        } else if(action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.text
-            this._callSubscribe(this._state)
-        }
-
-        // работает
-        else if(action.type === UPDATE_NEW_MESSAGE_BODY){
-            this._state.dialogsPage.newMessageBody = action.body
-            this._callSubscribe(this._state)
-
-        }else if(action.type === SENT_MESSAGE){
-            debugger
-            let pushElement = {
-                id: 7,
-                message: this._state.dialogsPage.newMessageBody
-            }
-            this._state.dialogsPage.messages.push(pushElement)
-            this._state.dialogsPage.newMessageBody = ''
-            this._callSubscribe(this._state)
-        }
-
-    },
     subscribe(observer){
         this._callSubscribe = observer
+    },
+
+    dispatch(action){
+        debugger
+        // Profile
+        this._state.profilePage = ProfileReducer(this._state.profilePage, action)
+
+        // Dialogs
+        this._state.dialogsPage = DialogsRedusor(this._state.dialogsPage, action)
+        this._callSubscribe(this._state)
     }
 }
 
-
-
-export let sendMessageCreater = () => {
-    return {
-        type: SENT_MESSAGE,
-        text: 'лалала'
-    }
-}
-
-export let updateNewMessageBodyCreater = (body) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_BODY,
-        body: body
-    }
-}
-
-
-
-
-
-
-export const addPostActionCreater = () => {
-    return {
-        type: ADD_POST
-    }
-}
-
-export const updateNewPostTextActionCreater = (textArea) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        text: textArea
-    }
-}
 
 
 window.store = store
