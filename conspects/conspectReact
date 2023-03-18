@@ -125,7 +125,20 @@
             dispatch - функция в которую приходят команды и она выбирает какая функция сработает
             action - обьект содержащий, как минимум type
 
+16) за место if и else использую switch
+    
+    switch(x) {
+		  case 'value1':  // if (x === 'value1')
+			    ...
+		    [break]
 
+		  case 'value2':  // if (x === 'value2')
+		     ...
+			   [break]
 
+		  default:
+		    ...
+		    [break]
+	}
 
-
+	
