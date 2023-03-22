@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from 'react-dom'
-import store from './redux/state'
+import store from './redux/redux-store'
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 
 let Render = (state) => {
-
+    debugger
     ReactDOM.render(
         <BrowserRouter>
             <App state={state}
@@ -18,6 +18,9 @@ let Render = (state) => {
 
 Render(store.getState())
 
-store.subscribe(Render)
+store.subscribe(() => {
+    let state = store.getState()
+    Render(state)
+})
 
 

@@ -1,4 +1,6 @@
-const SiteBarRedusor = (state, action) => {
+let inisgialState = {}
+
+const SiteBarRedusor = (state = inisgialState, action) => {
 
 
     return state

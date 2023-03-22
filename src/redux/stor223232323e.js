@@ -2,7 +2,7 @@ import DialogsRedusor from "./reducers/Dialogs-redusor";
 import ProfileReducer from "./reducers/Profile-reducer";
 
 
-let store = {
+let stor223232323e = {
     _state: {
         dialogsPage: {
                 dialogs: [
@@ -60,5 +60,5 @@ let store = {
 
 
 
-window.store = store
-export default store
+window.store = stor223232323e
+export default stor223232323e

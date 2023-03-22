@@ -15,6 +15,8 @@ import {Register} from "./components/Register/Register";
 
 function App(props) {
 
+    debugger
+
     return(
 
             <div className="app-wrapper">
