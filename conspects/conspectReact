@@ -141,4 +141,20 @@
 		    [break]
 	}
 
-	
+16) Redax
+        1)команда для создания stor223232323e
+        let stor223232323e = createStore()
+
+        2) команда для призыва redusers
+            let redusers = combineReducers({
+                ProfileReducer,
+                DialogsRedusor,
+                SiteBarRedusor
+
+                // ИЛИ
+
+                ProfileReducer: ProfileReducer,
+                DialogsRedusor: DialogsRedusor,
+                SiteBarRedusor: SiteBarRedusor
+
+            })
