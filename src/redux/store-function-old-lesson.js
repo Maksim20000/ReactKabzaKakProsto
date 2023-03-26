@@ -2,7 +2,7 @@ import DialogsRedusor from "./reducers/Dialogs-redusor";
 import ProfileReducer from "./reducers/Profile-reducer";
 
 
-let stor223232323e = {
+let storeFunctionOldLesson = {
     _state: {
         dialogsPage: {
                 dialogs: [
@@ -53,12 +53,12 @@ let stor223232323e = {
         this._state.profilePage = ProfileReducer(this._state.profilePage, action)
 
         // Dialogs
-        this._state.dialogsPage = DialogsRedusor(this._state.dialogsPage, action)
+        this._state.dialogsPage =  (this._state.dialogsPage, action)
         this._callSubscribe(this._state)
     }
 }
 
 
 
-window.store = stor223232323e
-export default stor223232323e
+window.store = storeFunctionOldLesson
+export default storeFunctionOldLesson

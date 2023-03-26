@@ -14,29 +14,22 @@ import {Register} from "./components/Register/Register";
 
 
 function App(props) {
-
-    debugger
-
     return(
-
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content' >
                     <Routes>
                         <Route path='/' element={ <Base /> } />
-                        <Route path="/profile" element = { <Profile state={props.state.profilePage}
-                                                                    valueArea={props.state.profilePage.newPostText}
-                                                                    newPostText={props.newPostText}
-                                                                    dispatch = {props.dispatch}
-                                                                    addPost = {props.addPost}
-                                                                    updateNewText = {props.updateNewText}
+                      <Route path="/profile" element = { <Profile state={props.state}
+                                                                    store = {props.store}
 
                         />}/>
 
                         <Route path="/dialogs" element = { <Dialogs store = {props.store}
+                                                                    state = {props.state}
                         />}/>
-                        <Route path="/new" element = { <New state={props.state.dialogsPage.dialogs} />} />
+                        <Route path="/new" element = { <New/>} />
                         <Route path="/music" element = {<Music />} />
                         <Route path="/setting" element = {<Setting />}/>
                         <Route path='/login' element={<Login/>} />

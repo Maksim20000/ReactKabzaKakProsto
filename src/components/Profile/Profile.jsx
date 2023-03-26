@@ -4,17 +4,13 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 function Profile(props) {
-
     return (
         <div className={s.whiteBG}>
 
             <ProfileInfo/>
-            <MyPosts postData={props.state.postData}
-                     dispatch = {props.dispatch}
-                     newPostText={props.newPostText}
-                     // addPost = {props.addPost}
-                     valueArea={props.valueArea}
-                     // updateNewText ={props.updateNewText}
+            <MyPosts
+                    state = {props.state}
+                     store = {props.store}
             />
         </div>
     )

@@ -1,13 +1,18 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./post/Post";
-import {addPostActionCreater, updateNewPostTextActionCreater} from "../../../redux/reducers/Profile-reducer";
+import {
+    addNewPostProfileCreater,
+    updateNewPostTextActionCreater
+} from "../../../redux/reducers/Profile-reducer";
 
 function MyPosts(props) {
 
+    let state = props.state.profilePage
     let newPostElement = React.createRef();
 
-    const dialogsElements = props.postData.map((el) => <Post
+
+    const dialogsElements = state.postData.map((el) => <Post
         name={el.name}
         likesCount={el.likesCount}
         img={el.img}
@@ -17,11 +22,11 @@ function MyPosts(props) {
 
     let addPastChange = () => {
         let textArea = newPostElement.current.value
-        props.dispatch(updateNewPostTextActionCreater(textArea))
+        props.store.dispatch(updateNewPostTextActionCreater(textArea))
     }
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreater())
+    let addPostProfile = () => {
+        props.store.dispatch(addNewPostProfileCreater())
     }
 
 
@@ -32,10 +37,10 @@ function MyPosts(props) {
             </div>
             <div>
                 <div>
-                    <textarea onChange={addPastChange} ref={ newPostElement } value={props.valueArea}/>
+                    <textarea onChange={addPastChange} ref={ newPostElement } value={props.state.profilePage.newPostText}/>
                 </div>
                 <div>
-                    <button onClick={addPost}>Add post</button>
+                    <button onClick={addPostProfile}>add post</button>
                 </div>
             </div>
             <div className={s.posts}>

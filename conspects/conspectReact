@@ -142,8 +142,10 @@
 	}
 
 16) Redax
-        1)команда для создания stor223232323e
-        let stor223232323e = createStore()
+        1)команда для создания storeFunctionOldLesson
+        let storeFunctionOldLesson = createStore()
+        let store = legacy_createStore(redusers)
+
 
         2) команда для призыва redusers
             let redusers = combineReducers({
@@ -158,3 +160,6 @@
                 SiteBarRedusor: SiteBarRedusor
 
             })
+
+            3) в редакс уже встроен метод getState(), subscribe(),
+                dispatch() - тоже сидит

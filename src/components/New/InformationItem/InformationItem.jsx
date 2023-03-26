@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import css from './InformationItem.module.css'
 export function InformationItem(props) {
     return (
