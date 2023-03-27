@@ -2,7 +2,6 @@ import React from "react";
 import './App.css'
 import Header from "./components/Header/Header";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import {Route, Routes} from "react-router-dom";
 import {Setting} from "./components/Setting/Setting";
 import {Music} from "./components/Music/Music";
@@ -11,6 +10,7 @@ import New from "./components/New/New";
 import Navbar from "./components/NavBar/Navbar_header";
 import {Base} from "./components/Base/Base";
 import {Register} from "./components/Register/Register";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
 function App(props) {
@@ -26,7 +26,7 @@ function App(props) {
 
                         />}/>
 
-                        <Route path="/dialogs" element = { <Dialogs store = {props.store}
+                        <Route path="/dialogs" element = { <DialogsContainer store = {props.store}
                                                                     state = {props.state}
                         />}/>
                         <Route path="/new" element = { <New/>} />
