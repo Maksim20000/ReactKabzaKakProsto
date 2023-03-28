@@ -166,3 +166,58 @@
 
 19) контейнерная компонента - компонента к которой приписывается container в которой все
     функции, которые мы запускаем в основной части
+
+20) Контекст
+    1) так создвется
+    import React from "react";
+    const storeContext = React.createContext(null)
+    export default storeContext
+
+    2) Вызываем в главном файле с помощью команды
+       <StoreContext.Provider value={props.store}>
+
+    3) после обращаемся к ней с помощью команды
+    <StoreContext.Consumer>
+    { - эта скобочка обязательно должна быть на этой строчке без нее не будет все работать
+                (store) => (
+                    <MyPosts addPastChange={addPastChange}
+                             addPostProfile={addPostProfile}
+                             state={state}
+                             dialogsElementsMap={dialogsElements}
+                    />
+                )
+            }
+    </StoreContext.Consumer>
+
+   или
+
+   return (
+           <StoreContext.Consumer>
+               {
+               (store) => {
+                   let state = store.getState().profilePage
+
+                   const dialogsElements = state.postData.map((el) => <Post
+                       name={el.name}
+                       likesCount={el.likesCount}
+                       img={el.img}
+                       message={el.message}
+                   />)
+
+                   let addPastChange = (text) => {
+                       let textArea = text
+                       store.dispatch(updateNewPostTextActionCreater(textArea))
+                   }
+
+                   let addPostProfile = () => {
+                       store.dispatch(addNewPostProfileCreater())
+                   }
+
+                   return(<MyPosts addPastChange={addPastChange}
+                                   addPostProfile={addPostProfile}
+                                   state={state}
+                                   dialogsElementsMap={dialogsElements}/>
+                   )
+               }
+           }
+           </StoreContext.Consumer>)
