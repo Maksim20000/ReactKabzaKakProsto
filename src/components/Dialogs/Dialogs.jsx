@@ -1,9 +1,16 @@
 import React from "react";
 import s from './Dialogs.module.css'
+import {DialogItem} from "./DialogItem/DialogItem";
+import {Message} from "./MessageDialog/Message";
 
 function Dialogs(props){
     debugger
     let refReact = React.createRef()
+
+    let state = props.state.dialogsPage
+
+    let dialogsElements = state.dialogs.map( d => <DialogItem id={d.id} name={d.name} /> )
+    let MessagesElements = state.messages.map( m => <Message message= {m.message} /> )
 
     let onClickButtonDialogs = () => {
         props.onSendMessageClick()
@@ -17,14 +24,14 @@ function Dialogs(props){
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs_Items}>
-                { props.dialogsElements }
+                { dialogsElements }
             </div>
             <div className={s.messages}>
-                <div>{props.MessagesElements}</div>
+                <div>{MessagesElements}</div>
                 <div>
                     <div><textarea
                         onChange={ onNewMessageChange }
-                        value={ props.state.newMessageBody }
+                        value={ state.newMessageBody }
                         ref = { refReact}
                         placeholder='Нажмин на меня!'></textarea></div>
                     <div><button onClick={ onClickButtonDialogs }>Кнопка</button></div>

@@ -11,7 +11,7 @@ import Navbar from "./components/NavBar/Navbar_header";
 import {Base} from "./components/Base/Base";
 import {Register} from "./components/Register/Register";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import StoreContext, {Provider} from "./storeContext";
+import {Provider} from "react-redux";
 
 
 function App(props) {

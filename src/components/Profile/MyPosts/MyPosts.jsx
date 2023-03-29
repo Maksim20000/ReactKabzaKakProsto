@@ -3,7 +3,6 @@ import s from './MyPosts.module.css'
 import Post from "./post/Post";
 
 function MyPosts(props) {
-
     let newPostElement = React.createRef()
     const dialogsElements = props.state.postData.map((el) => <Post
         name={el.name}
@@ -40,7 +39,7 @@ function MyPosts(props) {
                 </div>
             </div>
             <div className={s.posts}>
-                { props.dialogsElementsMap }
+                { dialogsElements }
             </div>
         </div>)
 }

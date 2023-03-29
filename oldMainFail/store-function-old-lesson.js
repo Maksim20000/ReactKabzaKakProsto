@@ -1,5 +1,5 @@
-import DialogsRedusor from "./reducers/Dialogs-redusor";
-import ProfileReducer from "./reducers/Profile-reducer";
+import DialogsRedusor from "../src/redux/reducers/Dialogs-redusor";
+import ProfileReducer from "../src/redux/reducers/Profile-reducer";
 
 
 let storeFunctionOldLesson = {

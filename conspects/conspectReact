@@ -221,3 +221,20 @@
                }
            }
            </StoreContext.Consumer>)
+
+21) метод connect
+
+    let f1 = () => {
+        return {
+            c1: 1,
+            c2: 3,
+            c4:5
+        }
+    }
+    const SuperDialogsContainer = connect(что должно передаваться в просы fi и в пропсах должно прийти c1,c2,c4
+    )(Dialogs - имя того как должен называться компонент) - создает
+
+    В функции можно передавать dispatch = store.dispatch.bind(store)
+                                state = store.getState()
+
+    Традиционные названия: MapToStateProps, MapDispatchToProps
