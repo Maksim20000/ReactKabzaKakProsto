@@ -238,3 +238,34 @@
                                 state = store.getState()
 
     Традиционные названия: MapToStateProps, MapDispatchToProps
+
+22) копии
+	let b = {
+            ...a - три точки называется срейт оператор
+        } -- поверхносная копия
+	
+	Код с урока
+	
+	<script >
+        let a = {
+            age: 3,
+            name: 'Sam',
+            studens: [5,5,5,4,7,8,6,6,5,4,],
+            teacher:{
+                age: 5,
+                name: 'ZOnt'
+            }
+        }
+        let b = {
+
+        }
+
+        b.teacher = { ...a.teacher}
+        b.studens = { ...a.studens}
+
+        b.teacher.name = 'Dimoch'
+
+    
+        console.log(a)
+        console.log(b)
+    </script>
