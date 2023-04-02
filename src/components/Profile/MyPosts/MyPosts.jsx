@@ -3,8 +3,12 @@ import s from './MyPosts.module.css'
 import Post from "./post/Post";
 
 function MyPosts(props) {
+    debugger
+
+    let state = props.state
+
     let newPostElement = React.createRef()
-    const dialogsElements = props.state.postData.map((el) => <Post
+    const dialogsElements = state.postData.map((el) => <Post
         name={el.name}
         likesCount={el.likesCount}
         img={el.img}
@@ -32,7 +36,7 @@ function MyPosts(props) {
             </div>
             <div>
                 <div>
-                    <textarea onChange={onPostChange} ref={ newPostElement } value={props.state.newPostText}/>
+                    <textarea onChange={onPostChange} ref={ newPostElement } value={state.newPostText}/>
                 </div>
                 <div>
                     <button onClick={onClickAddPost}>add post</button>
