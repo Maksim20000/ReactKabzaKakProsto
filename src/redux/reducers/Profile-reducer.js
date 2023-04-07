@@ -70,6 +70,8 @@ const ProfileReducer = (state = initialState, action) => {
         case UPDATE_NEW_POST_TEXT:{
             let stateCopy ={...state}
             stateCopy.newPostText = action.text
+            
+            ошибка не то возвращаю
             return state
         }
 
