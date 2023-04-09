@@ -4,7 +4,8 @@ import {addNewPostProfileCreater, updateNewPostTextActionCreater} from "../../..
 
 const mapStateToProps = (state) => {
     return {
-        state: state.profilePage
+        posts: state.profilePage.posts,
+        newPostText: state.profilePage.newPostText
     }
 }
 

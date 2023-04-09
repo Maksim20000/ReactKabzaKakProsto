@@ -53,16 +53,15 @@ const ProfileReducer = (state = initialState, action) => {
     debugger
     switch (action.type) {
         case ADD_POST: {
+            let stateCopy = {...state}
             let newPost = {
-                id: 5,
+                id: 11,
                 message: state.newPostText,
                 likesCount: 5545454,
                 name: 'Андрей',
                 img: 'https://avatars.mds.yandex.net/i?id=8e1656b53d712f3d1d39bc3ecb78c46e4d0c80fc-8196573-images-thumbs&n=13'
             };
-            let stateCopy = {...state}
-            stateCopy.post = [...state.postData]
-            stateCopy.post.push(newPost)
+            stateCopy.posts.push(newPost)
             stateCopy.newPostText = ''
             return stateCopy
         }
@@ -70,9 +69,7 @@ const ProfileReducer = (state = initialState, action) => {
         case UPDATE_NEW_POST_TEXT:{
             let stateCopy ={...state}
             stateCopy.newPostText = action.text
-            
-            ошибка не то возвращаю
-            return state
+            return stateCopy
         }
 
         default:{
