@@ -269,3 +269,11 @@
         console.log(a)
         console.log(b)
     </script>
+
+    Все копии с ... - поверхносные копии и в redusors вызываем их так
+    let stateCopy = {
+            ...state,
+            messages: [...state.messages] - правило инютабельности
+    }
+
+    Чтобы не было ошибок с key нужно в параметре map прописать key={s.id}

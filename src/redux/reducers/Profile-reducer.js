@@ -1,4 +1,3 @@
-
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
@@ -50,32 +49,30 @@ let initialState = {
     newPostText: 'Привет'
 }
 const ProfileReducer = (state = initialState, action) => {
-    debugger
     switch (action.type) {
-        case ADD_POST: {
-            let stateCopy = {...state}
+        case ADD_POST:
             let newPost = {
                 id: 11,
                 message: state.newPostText,
                 likesCount: 5545454,
                 name: 'Андрей',
                 img: 'https://avatars.mds.yandex.net/i?id=8e1656b53d712f3d1d39bc3ecb78c46e4d0c80fc-8196573-images-thumbs&n=13'
-            };
-            stateCopy.posts.push(newPost)
-            stateCopy.newPostText = ''
-            return stateCopy
-        }
+            }
+            return {
+                ...state,
+                newPostText: '',
+                posts: [...state.posts, newPost]
+            }
 
-        case UPDATE_NEW_POST_TEXT:{
-            let stateCopy ={...state}
-            stateCopy.newPostText = action.text
-            return stateCopy
-        }
+        case UPDATE_NEW_POST_TEXT:
+            return {
+                ...state,
+                newPostText: action.body
+            }
 
-        default:{
-            let stateCopy ={...state}
-            return stateCopy
-        }
+        default:
+            return {...state}
+
     }
 }
 
@@ -89,15 +86,8 @@ export const addNewPostProfileCreater = () => {
 export const updateNewPostTextActionCreater = (textArea) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
-        text: textArea
+        body: textArea
     }
 }
-
-// export let updateNewMessageBodyCreater = (body) => {
-//     return {
-//         type: UPDATE_NEW_MESSAGE_BODY,
-//         body: body
-//     }
-// }
 
 export default ProfileReducer

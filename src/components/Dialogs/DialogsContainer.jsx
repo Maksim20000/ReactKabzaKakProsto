@@ -1,12 +1,12 @@
-
 import {connect} from "react-redux";
 import Dialogs from "./Dialogs";
 import {sendMessageCreater, updateNewMessageBodyCreater} from "../../redux/reducers/Dialogs-redusor";
 
-debugger
+
 let MapToStateProps = (state) => {
     return {
         state: state
+
     }
 
 }

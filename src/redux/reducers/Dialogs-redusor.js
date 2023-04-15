@@ -19,32 +19,31 @@ let inishialState = {
         {id: 6, message: 'Web storm toppp'},
     ],
     newMessageBody: 'Привет228'
-
 }
 
 const DialogsRedusor = (state = inishialState, action) => {
-
+    debugger
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_BODY:{
-            let copyState = {...state}
-            copyState.newMessageBody = action.body
-            return copyState
-        }
-        case SENT_MESSAGE:{
-            let pushElement = {
+        case UPDATE_NEW_MESSAGE_BODY:
+            return {
+                ...state,
+                newMessageBody: action.body
+            }
+
+
+        case SENT_MESSAGE:
+            let newPostText = {
                 id: 7,
                 message: state.newMessageBody
             }
-            let copyState = {...state}
-            copyState.messages = [...state.messages]
-            copyState.messages.push(pushElement)
-            copyState.newMessageBody = ''
-            return copyState
-        }
-        default:{
-            let copyState = {...state}
-            return copyState
-        }
+            return{
+                ...state,
+                newMessageBody: '',
+                messages: [...state.messages, newPostText]
+            }
+        default:
+            return state
+
     }
 }
 
