@@ -5,7 +5,7 @@ import App from "./App";
 import store from './redux/redux-store'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
+debugger
 ReactDOM.render(
     <BrowserRouter>
         <App state={store.getState()}

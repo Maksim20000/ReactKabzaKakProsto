@@ -30,17 +30,17 @@ const DialogsRedusor = (state = inishialState, action) => {
                 newMessageBody: action.body
             }
 
-
         case SENT_MESSAGE:
             let newPostText = {
                 id: 7,
                 message: state.newMessageBody
             }
-            return{
+            return {
                 ...state,
                 newMessageBody: '',
                 messages: [...state.messages, newPostText]
             }
+
         default:
             return state
 

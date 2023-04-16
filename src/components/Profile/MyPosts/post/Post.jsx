@@ -5,7 +5,7 @@ class Post extends React.Component{
         return(
             <div className={s.items}>
                 <div className={s.m20px}>
-                    <img src={this.props.img} />
+                    {/*<img src={this.props.img} />*/}
                     <span className={s.p50px}>Сказал {this.props.name}:</span>
                     <span>{this.props.message}</span>
                     <span className={s.p50px}>likes: {this.props.likesCount}</span>

@@ -1,0 +1,2 @@
+1) export default connect(mapStateToProps, mapDispatchToProps)(Users) -
+        User должно писаться без </>
