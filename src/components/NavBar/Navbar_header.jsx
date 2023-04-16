@@ -17,6 +17,9 @@ function Navbar(props) {
                     <NavLink to='/dialogs'>Dialogs</NavLink>
                 </div>
                 <div className={s.item}>
+                    <NavLink to='/Users'>Users</NavLink>
+                </div>
+                <div className={s.item}>
                     <NavLink to='/new'>New</NavLink>
                 </div>
                 <div className={s.item}>

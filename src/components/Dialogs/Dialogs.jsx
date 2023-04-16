@@ -3,6 +3,7 @@ import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./MessageDialog/Message";
 
+
 function Dialogs(props){
     debugger
     let refReact = React.createRef()
@@ -34,7 +35,9 @@ function Dialogs(props){
                         value={ state.newMessageBody }
                         ref = { refReact}
                         placeholder='Нажмин на меня!'></textarea></div>
-                    <div><button onClick={ onClickButtonDialogs }>Кнопка</button></div>
+                    <div><button onClick={ onClickButtonDialogs } className='btn btn-success'>Кнопка</button>
+                    </div>
+
                 </div>
             </div>
         </div>

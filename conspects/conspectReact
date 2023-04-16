@@ -277,3 +277,6 @@
     }
 
     Чтобы не было ошибок с key нужно в параметре map прописать key={s.id}
+
+23) Bootstrap импортируем с помощью команды
+    import 'bootstrap/dist/css/bootstrap.min.css';

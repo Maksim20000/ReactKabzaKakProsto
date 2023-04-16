@@ -12,6 +12,7 @@ import {Base} from "./components/Base/Base";
 import {Register} from "./components/Register/Register";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {Provider} from "react-redux";
+import {Users} from "./components/Users/Users";
 
 
 function App(props) {
@@ -31,6 +32,8 @@ function App(props) {
                         <Route path="/dialogs" element={<DialogsContainer store={props.store}
                                                                           state={props.state}
                         />}/>
+
+                        <Route path="/users" element={<Users />}/>
                         <Route path="/new" element={<New/>}/>
                         <Route path="/music" element={<Music/>}/>
                         <Route path="/setting" element={<Setting/>}/>
