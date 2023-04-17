@@ -1,4 +1,27 @@
 .photo{
     width: 100px;
     height: 100px;
+    border-radius: 50px;
+    border: solid 2px black;
+}
+
+.place{
+    padding:20px 20px ;
+}
+.buttonFU{
+    padding: 25px 20px;
+    width: 120px;
+}
+
+.nameANDstutus{
+    padding: 20px 20px;
+}
+
+.main{
+    margin: 50px;
+}
+
+.allUser{
+    margin: 20px;
+    display: flex;
 }

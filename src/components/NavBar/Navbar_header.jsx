@@ -11,25 +11,25 @@ function Navbar(props) {
         <nav className={`${s.nav} ${s.white}`}>
             <div>
                 <div className={s.item}>
-                    <NavLink to='/profile'>Profile</NavLink>
+                    <NavLink className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' to='/profile'>Profile</NavLink>
                 </div>
                 <div className={`${s.nav} ${s.item} ${s.white}`}>
-                    <NavLink to='/dialogs'>Dialogs</NavLink>
+                    <NavLink className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' to='/dialogs'>Dialogs</NavLink>
                 </div>
                 <div className={s.item}>
-                    <NavLink to='/Users'>Users</NavLink>
+                    <NavLink className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' to='/Users'>Users</NavLink>
                 </div>
                 <div className={s.item}>
-                    <NavLink to='/new'>New</NavLink>
+                    <NavLink className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' to='/new'>New</NavLink>
                 </div>
                 <div className={s.item}>
-                    <NavLink to='/music'>Music</NavLink>
+                    <NavLink className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' to='/music'>Music</NavLink>
                 </div>
                 <div>
-                    <NavLink to='/setting'>Setting</NavLink>
+                    <NavLink className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' to='/setting'>Setting</NavLink>
                 </div>
                 <div>
-                    <NavLink to='/register'>Register</NavLink>
+                    <NavLink className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' to='/register'>Register</NavLink>
                 </div>
 
             </div>
