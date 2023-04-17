@@ -281,3 +281,4 @@
 23) Bootstrap импортируем с помощью команды
     import 'bootstrap/dist/css/bootstrap.min.css';
 
+24) return{...state, какой атрибут будет мнняться}
