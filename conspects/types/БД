@@ -1,3 +1,5 @@
+Скачиваем axios, redux
+
 1) state.profilePage.postData.push(newPost) - делает новый элемента в массиве, нельзя для
     полного замещения файла
 

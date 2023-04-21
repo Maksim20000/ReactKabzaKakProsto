@@ -22,7 +22,6 @@ let inishialState = {
 }
 
 const DialogsRedusor = (state = inishialState, action) => {
-    debugger
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
             return {

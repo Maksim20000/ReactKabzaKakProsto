@@ -1,58 +1,13 @@
 import s from './user.module.css'
+import axios from "axios";
+import defaultAvatarUser from '../../assets/img/defaultAvatarUser.jpg'
 
-debugger
 export let Users = (props) => {
-
+    debugger
     if (props.users.length === 0) {
-        props.setUsers([{
-            id: 1,
-            followed: true,
-            photoUrl: 'https://n1s2.hsmedia.ru/1c/2d/db/1c2ddba2542202e3d5110fe28d026247/480x497_0xac120003_12278425171554311041.jpg',
-            fullName: 'Misha',
-            status: 'boss',
-            location: {city: 'Minsk', country: 'Russia'}
-        },
-            {
-                id: 2,
-                followed: false,
-                photoUrl: 'https://n1s2.hsmedia.ru/1c/2d/db/1c2ddba2542202e3d5110fe28d026247/480x497_0xac120003_12278425171554311041.jpg',
-                fullName: 'Anton',
-                status: 'teacher',
-                location: {city: 'Vladivostok', country: 'Russia'}
-            },
-            {
-                id: 3,
-                followed: true,
-                photoUrl: 'https://n1s2.hsmedia.ru/1c/2d/db/1c2ddba2542202e3d5110fe28d026247/480x497_0xac120003_12278425171554311041.jpg',
-                fullName: 'Sasha',
-                status: 'puiple',
-                location: {city: 'New York', country: 'USA'}
-            },
-            {
-                id: 4,
-                followed: false,
-                photoUrl: 'https://n1s2.hsmedia.ru/1c/2d/db/1c2ddba2542202e3d5110fe28d026247/480x497_0xac120003_12278425171554311041.jpg',
-                fullName: 'Oleg',
-                status: 'teacher',
-                location: {city: 'Nigeria', country: 'Afrika'}
-            },
-            {
-                id: 5,
-                followed: true,
-                photoUrl: 'https://n1s2.hsmedia.ru/1c/2d/db/1c2ddba2542202e3d5110fe28d026247/480x497_0xac120003_12278425171554311041.jpg',
-                fullName: 'Julia',
-                status: 'Head Master',
-                location: {city: 'Britania', country: 'UK'}
-            },
-            {
-                id: 6,
-                followed: false,
-                photoUrl: 'https://n1s2.hsmedia.ru/1c/2d/db/1c2ddba2542202e3d5110fe28d026247/480x497_0xac120003_12278425171554311041.jpg',
-                fullName: 'Dimchk',
-                status: 'teacher',
-                location: {city: 'Franch', country: 'Russia'}
-            }])
-
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(responce =>{
+            props.setUsers(responce.data.items)
+            })
     }
     return (
         <div className={s.main}>
@@ -61,7 +16,8 @@ export let Users = (props) => {
                     <div className={s.allUser}>
                         <div className='d-flex'>
                             <div>
-                                <img src={u.photoUrl} className={s.photo} alt='Хз что напимать'/>
+                                <img src={u.photos.small != null ? u.photos.small : defaultAvatarUser}
+                                     alt='Не вывелось' className={s.photo}/>
                             </div>
                             <div className={s.buttonFU}>
                                 {u.followed ? <button onClick={() => {
@@ -79,10 +35,10 @@ export let Users = (props) => {
                             </div>
                             <div className={s.place}>
                                 <div>
-                                    Страна: {u.location.country}
+                                    Страна: {'u.location.country'}
                                 </div>
                                 <div>
-                                    Город: {u.location.city}
+                                    Город: {'u.location.city'}
                                 </div>
                             </div>
                         </div>
