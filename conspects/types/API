@@ -1,0 +1,17 @@
+1) API
+        Server API
+        1) URL
+        2) http-request type: Get/post
+        3) hhtps codes: 404 - not found
+                        5XX - server error
+                        3XX - redirect
+                        2XX - ok
+        4) request payload - что мы отправляем на сервак = action в реакт
+        5) response data - данные которые мы получаем
+
+         Rest API
+         1)get - post - put - delete (CRUD) - CreateReadUpdateDelete
+         get - read(получаем от сервака данные),
+         post - create(отправить на сервер),
+         put - update, delete = delete
+         2) http-request type: Get/post/put/delete/patch

@@ -1,0 +1,12 @@
+1) Route - путь на сайте
+    Как использовать:
+        1) <BrowserRouter> - весь сайт обернуть в этот тэг
+        2) потом Navbar обернуть в <Routes>
+        3) после мы используем:
+                <Route path="/dialogs"
+                element = { <Dialogs  state={props.state.dialogsPage} />}/>
+
+        4) В navBar :
+            <div className={s.item}>
+                 <NavLink to='/profile'>Profile</NavLink>
+            </div>

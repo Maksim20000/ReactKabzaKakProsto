@@ -87,6 +87,7 @@ export let Users = (props) => {
                             </div>
                         </div>
                     </div>
+                    <hr />
                 </div>)
             }
         </div>

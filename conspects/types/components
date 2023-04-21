@@ -1,0 +1,79 @@
+    1) Компоненты всегда должны писаться с большой буквы
+
+1) Компонента - функция, возврашающая jsx разметку ( Тэг)
+    const exampleKomponent = () => {
+        <h1>Привет JSX разметка !</h1>
+    }
+
+    ИЛИ
+
+    function exmpleFun() {
+        return(
+            <div>
+                Привет мир
+            </div>
+        )
+    }
+
+    Виды функциональных компонентов:
+        1) Тупая (dumb)
+        2) Без состояния (stateless)
+        3) презентационная (presentational)
+
+
+    ВАЖНО:
+    1.1 Функция не может возварщать 2 тега !
+
+2) props - данные, которые приходят из тэга в компонент
+
+    <exampleKomponent name='Петя' id=5 />
+    const exampleKomponent = (props) => {
+        <h1>{props.name}, {props.id}</h1>
+    }
+
+3) map - функция массива
+    const dialogsElements = props.postData.map((el) => <Post
+            name={el.name}
+            likesCount={el.likesCount}
+    />)
+
+
+4) Импорты бывают:
+    8.1 export default App - В import нужно вводить App
+    8.2 export function Lalalal - в import вводим { Lalalaa }
+
+5) CSS :
+   чтобы использовать файл только в 1 файле необходимо:
+        1) В файл css добавить style.module.css
+        2) чтобы призвать css модуль необходимо написать:
+            import s from './Profile.module.css'
+        3) обращаться к нему className={s.whiteBG}
+
+6) Чтобы создать переменную мы исользуем команду:
+      let newPostElement = React.createRef();
+      <textarea ref={ refTextArea } value='it'/>
+
+      let onClickButtonDialogs = () => {
+              let text = refTextArea.current.value
+              alert(text)
+      }
+
+7) контейнерная компонента - компонента к которой приписывается container в которой все
+    функции, которые мы запускаем в основной части
+
+8) метод connect
+
+    let f1 = () => {
+        return {
+            c1: 1,
+            c2: 3,
+            c4:5
+        }
+    }
+    const SuperDialogsContainer = connect(что должно передаваться в просы fi и в пропсах должно прийти c1,c2,c4
+    )(Dialogs - имя того как должен называться компонент) - создает
+
+    В функции можно передавать dispatch = store.dispatch.bind(store)
+                                state = store.getState()
+
+    Традиционные названия: MapToStateProps, MapDispatchToProps

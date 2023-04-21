@@ -7,125 +7,23 @@
 
 
 Важно в общем:
-    1) Компоненты всегда должны писаться с большой буквы
 
-1) Компонента - функция, возврашающая jsx разметку ( Тэг)
-    const exampleKomponent = () => {
-        <h1>Привет JSX разметка !</h1>
-    }
-
-    ИЛИ
-
-    function exmpleFun() {
-        return(
-            <div>
-                Привет мир
-            </div>
-        )
-    }
-
-    Виды функциональных компонентов:
-        1) Тупая (dumb)
-        2) Без состояния (stateless)
-        3) презентационная (presentational)
-
-
-    ВАЖНО:
-    1.1 Функция не может возварщать 2 тега !
-
-2) props - данные, которые приходят из тэга в компонент
-
-    <exampleKomponent name='Петя' id=5 />
-    const exampleKomponent = (props) => {
-        <h1>{props.name}, {props.id}</h1>
-    }
+1) Bootstrap импортируем с помощью команды
+    import 'bootstrap/dist/css/bootstrap.min.css';
 
 3) NodeJS - аналог браузера
 
 4) SPA (Single Page Aplecation ) - всего 1 HTML
     приходят только AJAX запросы
 
-5) map - функция массива
-    const dialogsElements = props.postData.map((el) => <Post
-            name={el.name}
-            likesCount={el.likesCount}
-    />)
-
-6) Route - путь на сайте
-    Как использовать:
-        1) <BrowserRouter> - весь сайт обернуть в этот тэг
-        2) потом Navbar обернуть в <Routes>
-        3) после мы используем:
-                <Route path="/dialogs"
-                element = { <Dialogs  state={props.state.dialogsPage} />}/>
-
-        4) В navBar :
-            <div className={s.item}>
-                 <NavLink to='/profile'>Profile</NavLink>
-            </div>
-
-7) UI - React
+5) UI - React
    BLL - Redax
 
-8) Импорты бывают:
-    8.1 export default App - В import нужно вводить App
-    8.2 export function Lalalal - в import вводим { Lalalaa }
 
-
-9) CSS :
-   чтобы использовать файл только в 1 файле необходимо:
-        1) В файл css добавить style.module.css
-        2) чтобы призвать css модуль необходимо написать:
-            import s from './Profile.module.css'
-        3) обращаться к нему className={s.whiteBG}
-
-10) Чтобы создать переменную мы исользуем команду:
-      let newPostElement = React.createRef();
-      <textarea ref={ refTextArea } value='it'/>
-
-      let onClickButtonDialogs = () => {
-              let text = refTextArea.current.value
-              alert(text)
-      }
-
-11) state.profilePage.postData.push(newPost) - делает новый элемента в массиве, нельзя для
-    полного замещения файла
-
-    state.profilePage.newPostText = newText - если необходимо полностью заместить файл
-
-12) window.popa = state;
+6) window.popa = state;
     Прикольная команда для консоли, когда popa - что вводится в консоли
 
-13) let textArea = newPostElement.current.value - раскрывает ref в функции реакт
-
-14) можно выпрыгивать из функции и присваивать другой функции другое значение
-    export const subscribe = (observer) => {
-        Render = observer - (observer - паттерн почитать = publisher-subscribe = addEventListener)
-    }
-
-
-15)OPP
-    1)когда имя переменной начинается с _ то к нему нельзя обращаться напрямую(а присваеваем с помощью
-        setContent - функция)
-        setContent(value){
-            this._pipa = value
-        }
-
-    Метод - функция внутри массива
-        Render(){
-                console.log('Проивет')
-        }
-
-    2) Скобки в html используются если нужно сразу в нем ее актевировать
-
-    3) bind() - приделает пропсам владельца где не вызывается
-    почитать
-
-    4) dispatch(action)
-            dispatch - функция в которую приходят команды и она выбирает какая функция сработает
-            action - обьект содержащий, как минимум type
-
-16) за место if и else использую switch
+7) за место if и else использую switch
     
     switch(x) {
 		  case 'value1':  // if (x === 'value1')
@@ -141,33 +39,7 @@
 		    [break]
 	}
 
-16) Redax
-        1)команда для создания storeFunctionOldLesson
-        let storeFunctionOldLesson = createStore()
-        let store = legacy_createStore(redusers)
-
-
-        2) команда для призыва redusers
-            let redusers = combineReducers({
-                ProfileReducer,
-                DialogsRedusor,
-                SiteBarRedusor
-
-                // ИЛИ
-
-                ProfileReducer: ProfileReducer,
-                DialogsRedusor: DialogsRedusor,
-                SiteBarRedusor: SiteBarRedusor
-
-            })
-
-            3) в редакс уже встроен метод getState(), subscribe(),
-                dispatch() - тоже сидит
-
-19) контейнерная компонента - компонента к которой приписывается container в которой все
-    функции, которые мы запускаем в основной части
-
-20) Контекст
+8) Контекст
     1) так создвется
     import React from "react";
     const storeContext = React.createContext(null)
@@ -222,63 +94,24 @@
            }
            </StoreContext.Consumer>)
 
-21) метод connect
 
-    let f1 = () => {
-        return {
-            c1: 1,
-            c2: 3,
-            c4:5
-        }
-    }
-    const SuperDialogsContainer = connect(что должно передаваться в просы fi и в пропсах должно прийти c1,c2,c4
-    )(Dialogs - имя того как должен называться компонент) - создает
 
-    В функции можно передавать dispatch = store.dispatch.bind(store)
-                                state = store.getState()
 
-    Традиционные названия: MapToStateProps, MapDispatchToProps
 
-22) копии
-	let b = {
-            ...a - три точки называется срейт оператор
-        } -- поверхносная копия
-	
-	Код с урока
-	
-	<script >
-        let a = {
-            age: 3,
-            name: 'Sam',
-            studens: [5,5,5,4,7,8,6,6,5,4,],
-            teacher:{
-                age: 5,
-                name: 'ZOnt'
-            }
-        }
-        let b = {
 
-        }
 
-        b.teacher = { ...a.teacher}
-        b.studens = { ...a.studens}
 
-        b.teacher.name = 'Dimoch'
 
-    
-        console.log(a)
-        console.log(b)
-    </script>
 
-    Все копии с ... - поверхносные копии и в redusors вызываем их так
-    let stateCopy = {
-            ...state,
-            messages: [...state.messages] - правило инютабельности
-    }
 
-    Чтобы не было ошибок с key нужно в параметре map прописать key={s.id}
 
-23) Bootstrap импортируем с помощью команды
-    import 'bootstrap/dist/css/bootstrap.min.css';
 
-24) return{...state, какой атрибут будет мнняться}
+
+
+
+
+
+
+
+
+

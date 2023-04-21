@@ -1,0 +1,99 @@
+1) state.profilePage.postData.push(newPost) - делает новый элемента в массиве, нельзя для
+    полного замещения файла
+
+    state.profilePage.newPostText = newText - если необходимо полностью заместить файл
+
+2) window.popa = state;
+    Прикольная команда для консоли, когда popa - что вводится в консоли
+
+3) let textArea = newPostElement.current.value - раскрывает ref в функции реакт
+
+4) можно выпрыгивать из функции и присваивать другой функции другое значение
+    export const subscribe = (observer) => {
+        Render = observer - (observer - паттерн почитать = publisher-subscribe = addEventListener)
+    }
+
+5)OPP
+    1)когда имя переменной начинается с _ то к нему нельзя обращаться напрямую(а присваеваем с помощью
+        setContent - функция)
+        setContent(value){
+            this._pipa = value
+        }
+
+    Метод - функция внутри массива
+        Render(){
+                console.log('Проивет')
+        }
+
+    2) Скобки в html используются если нужно сразу в нем ее актевировать
+
+    3) bind() - приделает пропсам владельца где не вызывается
+    почитать
+
+    4) dispatch(action)
+            dispatch - функция в которую приходят команды и она выбирает какая функция сработает
+            action - обьект содержащий, как минимум type
+
+6) Redax
+        1)команда для создания storeFunctionOldLesson
+        let storeFunctionOldLesson = createStore()
+        let store = legacy_createStore(redusers)
+
+
+        2) команда для призыва redusers
+            let redusers = combineReducers({
+                ProfileReducer,
+                DialogsRedusor,
+                SiteBarRedusor
+
+                // ИЛИ
+
+                ProfileReducer: ProfileReducer,
+                DialogsRedusor: DialogsRedusor,
+                SiteBarRedusor: SiteBarRedusor
+
+            })
+
+            3) в редакс уже встроен метод getState(), subscribe(),
+                dispatch() - тоже сидит
+
+7) копии
+	let b = {
+            ...a - три точки называется срейт оператор
+        } -- поверхносная копия
+
+	Код с урока
+
+	<script >
+        let a = {
+            age: 3,
+            name: 'Sam',
+            studens: [5,5,5,4,7,8,6,6,5,4,],
+            teacher:{
+                age: 5,
+                name: 'ZOnt'
+            }
+        }
+        let b = {
+
+        }
+
+        b.teacher = { ...a.teacher}
+        b.studens = { ...a.studens}
+
+        b.teacher.name = 'Dimoch'
+
+
+        console.log(a)
+        console.log(b)
+    </script>
+
+    Все копии с ... - поверхносные копии и в redusors вызываем их так
+    let stateCopy = {
+            ...state,
+            messages: [...state.messages] - правило инютабельности
+    }
+
+    Чтобы не было ошибок с key нужно в параметре map прописать key={s.id}
+
+    return{...state, какой атрибут будет мнняться}
