@@ -8,6 +8,7 @@ let inishialState = {
     ]
 }
 const UsersRedusor = (state = inishialState, action) => {
+
     switch (action.type) {
         case FOLLOW:
             return {

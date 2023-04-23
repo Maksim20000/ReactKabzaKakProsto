@@ -1,8 +1,9 @@
-import {Users} from "./Users";
 import {connect} from "react-redux";
 import {followAC, setUsersAC, unfollowAC} from "../../redux/reducers/Users-redusor";
+import {Users} from "./Users";
 
 let mapStateToProps = (state) => {
+    debugger
     return {
         users: state.usersPage.users
     }

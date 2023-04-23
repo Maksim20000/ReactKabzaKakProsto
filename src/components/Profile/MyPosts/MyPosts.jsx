@@ -33,12 +33,17 @@ function MyPosts(props) {
             <div>
                 <h3>My post</h3>
             </div>
-            <div>
-                <div>
-                    <textarea onChange={onPostChange} ref={ newPostElement } value={props.newPostText}/>
+            <div className='d-flex'>
+                {/*<div>*/}
+                {/*    <textarea onChange={onPostChange} ref={ newPostElement } value={props.newPostText}/>*/}
+                {/*</div>*/}
+                {/*`${s.nav} ${s.item} ${s.white}`*/}
+                <div className={`${s.textArea}`}>
+                    <textarea className="form-control" placeholder="Leave a comment here" onChange={onPostChange} ref={ newPostElement } value={props.newPostText}
+                              id="floatingTextarea"></textarea>
                 </div>
                 <div>
-                    <button onClick={onClickAddPost} className='btn btn-success'>add post</button>
+                    <button onClick={onClickAddPost} className={`${'btn'} ${'btn-success'} ${s.button}`}>add post</button>
                 </div>
             </div>
             <div className={s.posts}>

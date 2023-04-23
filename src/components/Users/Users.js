@@ -3,14 +3,19 @@ import axios from "axios";
 import defaultAvatarUser from '../../assets/img/defaultAvatarUser.jpg'
 
 export let Users = (props) => {
-    debugger
-    if (props.users.length === 0) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(responce =>{
-            props.setUsers(responce.data.items)
+    let getUsers = () => {
+        if (props.users.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(responce =>{
+                props.setUsers(responce.data.items)
             })
+        }
     }
+
+
     return (
+
         <div className={s.main}>
+            <button onClick={getUsers}>Get Users</button>
             {
                 props.users.map(u => <div key={u.id}>
                     <div className={s.allUser}>
@@ -30,7 +35,7 @@ export let Users = (props) => {
                         </div>
                         <div className='d-flex'>
                             <div className={s.nameANDstutus}>
-                                <div>Имя: {u.fullName}</div>
+                                <div>Имя: {u.name}</div>
                                 <div>Stutus: {u.status}</div>
                             </div>
                             <div className={s.place}>

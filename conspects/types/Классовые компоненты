@@ -1,0 +1,32 @@
+1) Создаем класс  обычном JS
+
+class Man {
+            constructor(name, age){
+                this.name = name
+                this.age = age
+                console.log(this.name)
+                console.log(this.age)
+            }
+        }
+let petyTable = new Man('Петя', 154)
+
+2) оздаем класс в React
+class Man extends React.Component - наследуется от другого класса расширить {
+
+            Эту часть можно опустить
+            constructor(props){
+                super(props) - родительский конструктор
+            }
+
+            Методы
+            onClick = () => {...}
+            ИЛИ
+            onClick() {...}
+            render(){
+                return(
+                    <div>
+                        {this.props.name} {this.props.age}
+                    </div>
+                )
+            }
+        }

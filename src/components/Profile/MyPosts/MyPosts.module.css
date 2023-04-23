@@ -5,3 +5,12 @@
 .posts{
     padding-top: 10px;
 }
+
+.textArea{
+    width: 500px;
+}
+
+.button{
+    margin-left: 10px;
+    margin-top: 10px;
+}

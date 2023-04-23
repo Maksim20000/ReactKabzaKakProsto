@@ -30,7 +30,8 @@ function Dialogs(props){
             <div className={s.messages}>
                 <div>{MessagesElements}</div>
                 <div>
-                    <div><textarea
+                    <div className='d-flex'><textarea
+                        className="form-control"
                         onChange={ onNewMessageChange }
                         value={ state.newMessageBody }
                         ref = { refReact}
