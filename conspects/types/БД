@@ -99,3 +99,21 @@
     Чтобы не было ошибок с key нужно в параметре map прописать key={s.id}
 
     return{...state, какой атрибут будет мнняться}
+
+
+
+8) http get 'https://social-network.samuraijs.com/api/1.0/users?page=3&count=2' - строка запроса
+    Query Parameters:
+        count: (integer - default: 10 - maximum: 100) - количество эзиров на 1 страничке
+        page size (how many items will be returned in response)
+
+        page: (integer - default: 1) какая это страничка по счету
+        number of portion of items
+
+        term: (string)
+        user name string for searching
+
+        friend: (boolean)
+        if true, then find only followed users, false - only not followed users, if omit parameter - all users
+
+

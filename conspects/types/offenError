@@ -1,2 +1,6 @@
 1) export default connect(mapStateToProps, mapDispatchToProps)(Users) -
         User должно писаться без </>
+
+2) onClick={(Не колхозить! она анонимная) => { this.onPageChanged(el) }}
+
+3)pageSize: 100 - если больше 100 то не загружается страница

@@ -25,3 +25,8 @@
     margin: 20px;
     display: flex;
 }
+
+
+.selectedPage{
+    font-weight: bold;
+}
