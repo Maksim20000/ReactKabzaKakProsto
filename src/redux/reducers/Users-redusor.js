@@ -13,6 +13,7 @@ let inishialState = {
 const UsersRedusor = (state = inishialState, action) => {
     switch (action.type) {
         case SET_TOTAL_COUNT:
+            debugger
             return {
                 ...state,
                 totalUsersCount: action.totalUsersCount
