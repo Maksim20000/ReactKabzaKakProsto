@@ -14,7 +14,7 @@ export let Users = (props) => {
             <div>
                 { pages.map( el => {
                     return(
-                        <button onClick={() => { props.onPageChanged(el) }} className={props.currentPage === el && s.selectedPage} >
+                        <button onClick={() => { props.onPageChanged(el) }} className={props.currentPage === el && s.selectedPage} key={el.id}>
                             { el }
                         </button>)
                 }) }

@@ -22,35 +22,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (usersID) => {
-            let action = followAC(usersID)
-            dispatch(action)
-        },
-        unfollow: (usersID) => {
-            let action = unfollowAC(usersID)
-            dispatch(action)
-        },
-        setUsers: (users) => {
-            let action = setUsersAC(users)
-            dispatch(action)
-        },
-        setCurrentPage: (currentPage) => {
-            let action = setCurrentPageAC(currentPage)
-            dispatch(action)
-        },
-        setTotalCount: (totalUsersCount) => {
-            let action = setTotalCountAC(totalUsersCount)
-            dispatch(action)
-        },
-        toggleIsFetching: (isFeching) => {
-            let action = toggleIsFetchingAC(isFeching)
-            dispatch(action)
-        }
-    }
-}
-
 class UsersAPI extends React.Component {
     // По умолчанию
     // constructor(props) {
@@ -59,7 +30,6 @@ class UsersAPI extends React.Component {
     componentDidMount() {
         {this.props.toggleIsFetching(true)}
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(responce => {
-            debugger
             this.props.setUsers(responce.data.items)
             this.props.setTotalCount(responce.data.totalCount)
             {this.props.toggleIsFetching(false)}
@@ -95,5 +65,13 @@ class UsersAPI extends React.Component {
     }
 }
 
+let dispatches = {
+    follow: followAC,
+    unfollow:unfollowAC,
+    setUsers: setUsersAC,
+    setCurrentPage: setCurrentPageAC,
+    setTotalCount: setTotalCountAC,
+    toggleIsFetching: toggleIsFetchingAC
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersAPI)
+export default connect(mapStateToProps, dispatches)(UsersAPI)

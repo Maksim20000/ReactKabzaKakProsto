@@ -21,7 +21,6 @@ const UsersRedusor = (state = inishialState, action) => {
             }
 
         case SET_TOTAL_COUNT:
-            debugger
             return {
                 ...state,
                 totalUsersCount: action.totalUsersCount

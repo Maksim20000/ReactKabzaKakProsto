@@ -6,27 +6,17 @@ import {sendMessageCreater, updateNewMessageBodyCreater} from "../../redux/reduc
 let MapToStateProps = (state) => {
     return {
         state: state
-
     }
 
 }
 
-let MapDispatchToProps = (dispatch) => {
-    return {
-        onSendMessageClick: () => {
-            let action = sendMessageCreater()
-            dispatch(action)
-        },
-        onNewMessageChange: (body) => {
-            let action = updateNewMessageBodyCreater(body)
-            dispatch(action)
-        }
-    }
+
+let dispatch = {
+    onSendMessageClick:sendMessageCreater,
+    onNewMessageChange:updateNewMessageBodyCreater
 }
 
-
-
-const DialogsContainer = connect(MapToStateProps, MapDispatchToProps)(Dialogs)
+const DialogsContainer = connect(MapToStateProps, dispatch)(Dialogs)
 
 
 export default DialogsContainer

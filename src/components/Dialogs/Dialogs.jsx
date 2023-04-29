@@ -5,7 +5,6 @@ import {Message} from "./MessageDialog/Message";
 
 
 function Dialogs(props){
-    debugger
     let refReact = React.createRef()
 
     let state = props.state.dialogsPage
