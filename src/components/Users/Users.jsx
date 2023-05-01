@@ -1,6 +1,7 @@
 import s from "./user.module.css";
 import defaultAvatarUser from "../../assets/img/defaultAvatarUser.jpg";
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 export let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -24,8 +25,11 @@ export let Users = (props) => {
                     <div className={s.allUser}>
                         <div className='d-flex'>
                             <div>
-                                <img src={u.photos.small != null ? u.photos.small : defaultAvatarUser}
-                                     alt='Не вывелось' className={s.photo}/>
+                                <NavLink to={'/profile/' + u.id}>
+                                    <img src={u.photos.small != null ? u.photos.small : defaultAvatarUser}
+                                         alt='Не вывелось' className={s.photo}/>
+                                </NavLink>
+
                             </div>
                             <div className={s.buttonFU}>
                                 {u.followed ? <button onClick={() => {

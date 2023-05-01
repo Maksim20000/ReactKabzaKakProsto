@@ -1,7 +1,6 @@
 import React from "react";
 import './App.css'
 import Header from "./components/Header/Header";
-import Profile from "./components/Profile/Profile";
 import {Route, Routes} from "react-router-dom";
 import {Setting} from "./components/Setting/Setting";
 import {Music} from "./components/Music/Music";
@@ -13,6 +12,7 @@ import {Register} from "./components/Register/Register";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {Provider} from "react-redux";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 function App(props) {
@@ -24,7 +24,7 @@ function App(props) {
                 <div className='app-wrapper-content'>
                     <Routes>
                         <Route path='/' element={<Base/>}/>
-                        <Route path="/profile" element={<Profile state={props.state}
+                        <Route path="/profile" element={<ProfileContainer state={props.state}
                                                                  store={props.store}
 
                         />}/>

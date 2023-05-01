@@ -3,6 +3,7 @@ import s from "./ProfileInfo.module.css";
 import bg from '../../../assets/img/BackGround-for-Profile.jpg'
 
 function ProfileInfo(props) {
+    debugger
     return (
         <div>
             <div>
@@ -10,7 +11,7 @@ function ProfileInfo(props) {
                     <img src={bg} alt={'ЛАЛАЛЛА'}/>
                 </div>
                 <div className={s.descriptionBlock}>
-                    аватар + инфа
+                    <img src={props.profile.photos.large} alt={'Фото'} />
                 </div>
             </div>
         </div>

@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
+const setUserProfile = 'setUserProfileAC'
 
 let initialState = {
     posts: [
@@ -46,10 +48,22 @@ let initialState = {
             img: 'https://i.pinimg.com/originals/bc/2e/64/bc2e64ba090bf73db4afe763ca3b9a54.jpg'
         },
     ],
-    newPostText: 'Привет'
+    newPostText: 'Привет',
+    isFetching: false,
+    profile: null
 }
 const ProfileReducer = (state = initialState, action) => {
     switch (action.type) {
+        case setUserProfile:
+            debugger
+            return {
+                ...state, profile: action.profile
+            }
+
+        case TOGGLE_IS_FETCHING:
+            return {
+                ...state, isFetching: action.isFeching
+            }
         case ADD_POST:
             let newPost = {
                 id: 11,
@@ -73,6 +87,19 @@ const ProfileReducer = (state = initialState, action) => {
         default:
             return {...state}
 
+    }
+}
+export const setUserProfileAC = (profile) => {
+    return{
+        type: setUserProfile,
+        profile: profile
+    }
+}
+
+export const toggleIsFetchingACToProfile = (isFeching) => {
+    return{
+        type: TOGGLE_IS_FETCHING,
+        isFeching: isFeching
     }
 }
 
