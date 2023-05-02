@@ -5,11 +5,9 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {Preoloder} from "../comman/preloader/Preoloder";
 
 function Profile(props) {
-    debugger
     if(!props.profile){
-        return <Preoloder />
+        return (<Preoloder />)
     }
-
     return (
         <div className={s.whiteBG}>
 

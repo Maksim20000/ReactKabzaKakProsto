@@ -3,9 +3,9 @@ import {connect} from "react-redux";
 import Profile from "./Profile";
 import axios from "axios";
 import {setUserProfileAC, toggleIsFetchingACToProfile} from "../../redux/reducers/Profile-reducer";
-import {Preoloder} from "../comman/preloader/Preoloder";
 class ProfileContainer extends React.Component{
     componentDidMount() {
+
         // {this.props.isFetching(true)}
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(responce => {
             this.props.setUserProfileAC(responce.data)
@@ -17,7 +17,7 @@ class ProfileContainer extends React.Component{
 
         return(
             <div>
-                {this.props.isFetching ? <Preoloder /> : null}
+                {/*{this.props.isFetching ? <Preoloder /> : null}*/}
                 <Profile profile={this.props.profile}/>
             </div>
         )
@@ -26,7 +26,8 @@ class ProfileContainer extends React.Component{
 
 let mapStateToProps = (state) =>{
     return {
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
+        isFetching: state.profilePage.isFetching
     }
 }
 

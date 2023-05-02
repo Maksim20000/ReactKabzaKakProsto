@@ -24,8 +24,7 @@ function App(props) {
                 <div className='app-wrapper-content'>
                     <Routes>
                         <Route path='/' element={<Base/>}/>
-                        <Route path="/profile" element={<ProfileContainer state={props.state}
-                                                                 store={props.store}
+                        <Route path="/profile" element={<ProfileContainer
 
                         />}/>
 

@@ -55,7 +55,6 @@ let initialState = {
 const ProfileReducer = (state = initialState, action) => {
     switch (action.type) {
         case setUserProfile:
-            debugger
             return {
                 ...state, profile: action.profile
             }
