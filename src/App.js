@@ -24,14 +24,8 @@ function App(props) {
                 <div className='app-wrapper-content'>
                     <Routes>
                         <Route path='/' element={<Base/>}/>
-                        <Route path="/profile" element={<ProfileContainer
-
-                        />}/>
-
-                        <Route path="/dialogs" element={<DialogsContainer store={props.store}
-                                                                          state={props.state}
-                        />}/>
-
+                        <Route path="/profile/:userId?" element={<ProfileContainer/>}/>
+                        <Route path="/dialogs" element={<DialogsContainer/>}/>
                         <Route path="/users" element={<UsersContainer />}/>
                         <Route path="/new" element={<New/>}/>
                         <Route path="/music" element={<Music/>}/>

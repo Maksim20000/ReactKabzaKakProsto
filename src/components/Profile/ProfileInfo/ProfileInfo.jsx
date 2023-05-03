@@ -9,8 +9,14 @@ import twitter from './../../../assets/img/twitter.png'
 import instagram from './../../../assets/img/instagram.jpg'
 import youtube from './../../../assets/img/youtube.png'
 import github from './../../../assets/img/github.png'
+import {Preoloder} from "../../comman/preloader/Preoloder";
+import defaultAvatarUser from './../../../assets/img/defaultAvatarUser.jpg'
+
 function ProfileInfo(props) {
-    debugger
+    if(!props.profile){
+        return (<Preoloder />)
+    }
+
     return (
         <div>
             <div>
@@ -24,11 +30,8 @@ function ProfileInfo(props) {
                         <h2>Профиль пользователя с именем {props.profile.fullName}</h2>
                     </div>
                     <div className={'d-flex'}>
-                        <img src={props.profile.photos.small}
-                             className={s.imgUser}
-                             alt={'маленькаыя фтот'}
-                             width={'50px'} height={'50px'}
-                        />
+                        {props.profile.photos.small ? <img src={props.profile.photos.small} className={s.imgUser} alt={'маленькаыя фтот'} width={'50px'} height={'50px'}/>
+                            : <img src={defaultAvatarUser} className={s.imgUser}  alt="дефолтное фото"/>}
                         <div className={s.aboutMe}>
                             <div className={s.titleAboutMe}>
                                 <h2>Обо мне</h2>
@@ -49,45 +52,45 @@ function ProfileInfo(props) {
                         </div>
                     </div>
                     <div className={`${'d-flex'} ${s.contacts}`}>
-                        <a href={props.profile.contacts.facebook} target={'_blank'}>
+                        <a href={'https:/www.facebook.com/' + props.profile.contacts.facebook}  rel="noopener noreferrer" target={'_blank'}>
                             <img src={facebook}
                                  alt="facebook"
                                  className={s.faceBook}
                             />
                         </a>
-                        <a href={props.profile.contacts.website} target={'_blank'}>
+                        <a href={'https:/' + props.profile.contacts.website}  rel="noopener noreferrer" target={'_blank'}>
                             <img src={website}
                                  alt="facebook"
                                  className={s.faceBook}
                             />
                         </a>
-                        <a href={props.profile.contacts.vk} target={'_blank'}>
+                        <a href={'https://vk.com/feed' + props.profile.contacts.vk}  rel="noopener noreferrer" target={'_blank'}>
                             <img src={vk}
                                  alt="facebook"
                                  className={s.faceBook}
                             />
                         </a>
-                        <a href={props.profile.contacts.twitter} target={'_blank'}>
+                        <a href={props.profile.contacts.twitter}  rel="noopener noreferrer" target={'_blank'}>
                             <img src={twitter}
                                  alt="facebook"
                                  className={s.faceBook}
                             />
                         </a>
-                        <a href={props.profile.contacts.instagram} target={'_blank'}>
+                        <a href={props.profile.contacts.instagram}  rel="noopener noreferrer" target={'_blank'}>
                             <img src={instagram}
                                  alt="facebook"
                                  className={s.faceBook}
                             />
                         </a>
                         {/*youtube*/}
-                        <a href={props.profile.contacts.youtube} target={'_blank'}>
+                        <a href={props.profile.contacts.youtube}  rel="noopener noreferrer" target={'_blank'}>
                             <img src={youtube}
                                  alt="facebook"
                                  className={s.faceBook}
                             />
                         </a>
                     {/*github*/}
-                        <a href={props.profile.contacts.github} target={'_blank'}>
+                        <a href={props.profile.contacts.github}  rel="noopener noreferrer" target={'_blank'}>
                             <img src={github}
                                  alt="facebook"
                                  className={s.faceBook}

@@ -1,0 +1,2 @@
+1) <a href={'https://vk.com/feed' + props.profile.contacts.vk}  rel="noopener noreferrer" target={'_blank'}>
+    употребление target

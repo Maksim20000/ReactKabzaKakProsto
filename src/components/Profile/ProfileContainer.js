@@ -3,22 +3,44 @@ import {connect} from "react-redux";
 import Profile from "./Profile";
 import axios from "axios";
 import {setUserProfileAC, toggleIsFetchingACToProfile} from "../../redux/reducers/Profile-reducer";
-class ProfileContainer extends React.Component{
-    componentDidMount() {
+import {
+    useLocation,
+        useNavigate,
+        useParams,
+} from "react-router-dom";
 
-        // {this.props.isFetching(true)}
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(responce => {
-            this.props.setUserProfileAC(responce.data)
-        })
-        // {this.props.isFetching(false)}
+function withRouter(Component) {
+    function ComponentWithRouterProp(props) {
+        let location = useLocation();
+        let navigate = useNavigate();
+        let params = useParams();
+        return (
+            <Component
+                {...props}
+                router={{ location, navigate, params }}
+            />
+        );
     }
 
-    render(){
+    return ComponentWithRouterProp;
+}
 
+class ProfileContainer extends React.Component{
+
+    componentDidMount() {
+        let userId = this.props.router.params.userId
+        if(!userId){
+            userId = 2
+        }
+
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+ userId).then(responce => {
+            this.props.setUserProfileAC(responce.data)
+        })
+    }
+    render(){
         return(
             <div>
-                {/*{this.props.isFetching ? <Preoloder /> : null}*/}
-                <Profile profile={this.props.profile}/>
+                <Profile {...this.props}/>
             </div>
         )
     }
@@ -26,8 +48,7 @@ class ProfileContainer extends React.Component{
 
 let mapStateToProps = (state) =>{
     return {
-        profile: state.profilePage.profile,
-        isFetching: state.profilePage.isFetching
+        profile: state.profilePage.profile
     }
 }
 
@@ -36,4 +57,5 @@ let dispatches = {
     setUserProfileAC
 }
 
-export default connect(mapStateToProps, dispatches)(ProfileContainer)
+let withUrlDataContainerComponent = withRouter(ProfileContainer)
+export default connect(mapStateToProps, dispatches)(withUrlDataContainerComponent)
