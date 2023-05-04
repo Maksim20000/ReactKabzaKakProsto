@@ -18,6 +18,13 @@ class Man extends React.Component - наследуется от другого �
                 super(props) - родительский конструктор
             }
 
+						componentDidMount() { -метод который вызывается при запуске класс самый первый
+				        let userId = this.props.router.params.userId
+				        if(!userId){
+		            userId = 2
+		        }
+
+		     
             Методы
             onClick = () => {...}
             ИЛИ
