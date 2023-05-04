@@ -35,5 +35,5 @@
         return ComponentWithRouterProp;
     }
 
-    1)  <Route path="/profile/:userId" c помощью :
+    1)  <Route path="/profile/:userId" c помощью userId обозначаем параметр :
     2) path="/profile/:userId?" - ? если не будет параметра
