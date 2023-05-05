@@ -16,7 +16,7 @@
          put - update, delete = delete
          2) http-request type: Get/post/put/delete/patch
 
-8) http get 'https://social-network.samuraijs.com/api/1.0/users?page=3&count=2' - строка запроса
+2) http get 'https://social-network.samuraijs.com/api/1.0/users?page=3&count=2' - строка запроса
     Query Parameters:
         count: (integer - default: 10 - maximum: 100) - количество эзиров на 1 страничке
         page size (how many items will be returned in response)
@@ -29,4 +29,11 @@
 
         friend: (boolean)
         if true, then find only followed users, false - only not followed users, if omit parameter - all users
+
+
+3) axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{
+               withCredentials: true - поддерживает передачу куков на сайт - настройки запроса
+               }).then(responce => {
+               console.log(responce)
+           })
 

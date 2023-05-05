@@ -1,9 +1,24 @@
 .header {
     grid-area: h;
     background: deepskyblue;
+    width: 100%;
 }
-    .header img {
-        width: 50px;
-        height: 50px;
-        margin:5px
-    }
+
+.header img {
+    width: 50px;
+    height: 50px;
+    margin: 5px
+}
+
+.loginBlog{
+    float: right;
+    margin: 10px;
+}
+
+.imgAva{
+    border-radius: 50px;
+}
+
+.titleName{
+    margin-top: 10px;
+}

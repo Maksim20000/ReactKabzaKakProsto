@@ -7,6 +7,10 @@ https://www.iconfinder.com
 https://unfakepng.com/
 
 
+файл куки
+https://social-network.samuraijs.com/api/1.0/auth/me
+
+
 
 
 
