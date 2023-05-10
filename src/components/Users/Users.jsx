@@ -2,7 +2,7 @@ import s from "./user.module.css";
 import defaultAvatarUser from "../../assets/img/defaultAvatarUser.jpg";
 import React from "react";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
+import {UsersApi} from "../../API/api";
 
 export let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -34,22 +34,19 @@ export let Users = (props) => {
                             </div>
                             <div className={s.buttonFU}>
                                 {u.followed ? <button onClick={() => {
-                                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {withCredentials: true,
-                                            headers: {'API-KEY': 'f4369178-3f77-4cca-a2e8-83509a9dd95e'}
-                                        }).then(responce => {
-                                            if(responce.data.resultCode === 0){
+
+                                        UsersApi.unFollow(u.id).then(data => {
+                                            if(data.resultCode === 0){
                                                 props.unfollow(u.id)
                                             }
                                         })
                                     }} className='btn btn-danger'>UnFollow</button> :
                                     <button onClick={() => {
-                                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {withCredentials: true,
-                                            headers: {'API-KEY': 'f4369178-3f77-4cca-a2e8-83509a9dd95e'}
-                                        }).then(responce => {
-                                            if(responce.data.resultCode === 0){
+                                        UsersApi.Follow(u.id).then(data => {
+                                            if(data.resultCode === 0){
                                                 props.follow(u.id)
-                                            }
-                                        })
+                                        }
+                                    })
                                     }} className='btn btn-success'>Follow</button>}
                             </div>
                         </div>
