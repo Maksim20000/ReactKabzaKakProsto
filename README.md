@@ -1,5 +1,8 @@
 установить React Error Boundary
 
+посмотреть про создание автомотически компоненты 
+ссылка на git в star
+
 ссылка на проект
 https://marvelapp.com/prototype/39ef033/screen/53685910
 проверить сайт
