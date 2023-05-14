@@ -103,6 +103,10 @@
 		console.log(result);
 		// Expected output: Array ["exuberant", "destruction", "present"]
 
+10) метод every
+	[12, 5, 8, 130, 44].every(elem => elem >= 10);   // false
+	[12, 54, 18, 130, 44].every(elem => elem >= 10); // true
+
 
 
 
