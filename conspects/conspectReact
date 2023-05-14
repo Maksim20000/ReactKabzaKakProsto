@@ -111,6 +111,12 @@
 	[2, 5, 8, 1, 4].some(elem => elem > 10);  // false
 	[12, 5, 8, 1, 4].some(elem => elem > 10); // true
 
+12) операторы 
+			1) или result = a || b;
+			2) и result = a && b;
+			3) не result = !value;
+
+
 
 
 
