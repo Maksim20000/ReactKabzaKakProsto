@@ -103,10 +103,13 @@
 		console.log(result);
 		// Expected output: Array ["exuberant", "destruction", "present"]
 
-10) метод every
+10) метод every если хотябы 1 условие не удовлетворяет условию то выводится false
 	[12, 5, 8, 130, 44].every(elem => elem >= 10);   // false
 	[12, 54, 18, 130, 44].every(elem => elem >= 10); // true
 
+11) метод some если хотя бы 1 элемент удовлетворяет условию то выводится true
+	[2, 5, 8, 1, 4].some(elem => elem > 10);  // false
+	[12, 5, 8, 1, 4].some(elem => elem > 10); // true
 
 
 
