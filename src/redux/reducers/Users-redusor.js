@@ -2,19 +2,28 @@ const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USER = 'SETUSER'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
-let SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
-let TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
-
+const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
+const Following_is_Fetching_Progress = 'Following_is_Fetching'
 
 let inishialState = {
     users: [],
     pageSize: 100,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
+    followingInProgressBtn: []
 }
 const UsersRedusor = (state = inishialState, action) => {
     switch (action.type) {
+        case Following_is_Fetching_Progress:
+            return{
+                ...state,
+                followingInProgressBtn: action.isFetching
+                    ? [...state.followingInProgressBtn, action.userId]
+                    : state.followingInProgressBtn.filter(id => id != action.userId)
+            }
+
         case TOGGLE_IS_FETCHING:
             return {
                 ...state, isFetching: action.isFeching
@@ -65,6 +74,13 @@ const UsersRedusor = (state = inishialState, action) => {
         default:
             return state
 
+    }
+}
+
+export const toggleIsFolloingBtn = (isFetching, userId) => {
+    return {
+        type: Following_is_Fetching_Progress,
+        isFetching, userId
     }
 }
 

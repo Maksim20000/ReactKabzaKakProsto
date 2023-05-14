@@ -33,19 +33,22 @@ export let Users = (props) => {
 
                             </div>
                             <div className={s.buttonFU}>
-                                {u.followed ? <button onClick={() => {
-
+                                {u.followed ? <button disabled={props.followingInProgressBtn.some(id => id === u.id)} onClick={() => {
+                                        props.toggleIsFolloingBtn(true, u.id)
                                         UsersApi.unFollow(u.id).then(data => {
                                             if(data.resultCode === 0){
                                                 props.unfollow(u.id)
                                             }
+                                            props.toggleIsFolloingBtn(false, u.id)
                                         })
                                     }} className='btn btn-danger'>UnFollow</button> :
-                                    <button onClick={() => {
+                                    <button disabled={props.followingInProgressBtn.some(id => id === u.id)} onClick={() => {
+                                        props.toggleIsFolloingBtn(true, u.id)
                                         UsersApi.Follow(u.id).then(data => {
                                             if(data.resultCode === 0){
                                                 props.follow(u.id)
-                                        }
+                                            }
+                                            props.toggleIsFolloingBtn(false, u.id)
                                     })
                                     }} className='btn btn-success'>Follow</button>}
                             </div>

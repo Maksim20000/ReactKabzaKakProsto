@@ -3,7 +3,7 @@ import {
     followAC,
     setCurrentPageAC,
     setTotalCountAC,
-    setUsersAC, toggleIsFetchingAC,
+    setUsersAC, toggleIsFetchingAC, toggleIsFolloingBtn,
     unfollowAC
 } from "../../redux/reducers/Users-redusor";
 import React from "react";
@@ -18,7 +18,8 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgressBtn: state.usersPage.followingInProgressBtn
     }
 }
 
@@ -51,14 +52,7 @@ class UsersContainer extends React.Component {
             <>
                 {this.props.isFetching ?  <Preoloder />: null}
 
-                <Users totalUsersCount={this.props.totalUsersCount}
-                       pageSize={this.props.pageSize}
-                       onPageChanged={this.onPageChanged}
-                       currentPage={this.props.currentPage}
-                       users={this.props.users}
-                       follow={this.props.follow}
-                       unfollow={this.props.unfollow}
-                />
+                <Users {...this.props} onPageChanged={this.onPageChanged}/>
             </>
 
         )
@@ -71,7 +65,8 @@ let dispatches = {
     setUsers: setUsersAC,
     setCurrentPage: setCurrentPageAC,
     setTotalCount: setTotalCountAC,
-    toggleIsFetching: toggleIsFetchingAC
+    toggleIsFetching: toggleIsFetchingAC,
+    toggleIsFolloingBtn
 }
 
 export default connect(mapStateToProps, dispatches)(UsersContainer)
