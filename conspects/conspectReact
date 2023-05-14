@@ -94,6 +94,15 @@
                }
            }
            </StoreContext.Consumer>)
+ 
+9) метод filter - те значения которые приходят в метод filter и удовлетворяют 
+	условию остаются или записываются в переменную, если не удовлетворяет условию то убирается.
+
+   const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+		const result = words.filter(word => word.length > 6);
+		console.log(result);
+		// Expected output: Array ["exuberant", "destruction", "present"]
+
 
 
 
