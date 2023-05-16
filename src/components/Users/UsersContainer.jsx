@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {
-    followAC,
+    followAC, getUsersThunkCreator,
     setCurrentPageAC,
     setTotalCountAC,
     setUsersAC, toggleIsFetchingAC, toggleIsFolloingBtn,
@@ -29,20 +29,15 @@ class UsersContainer extends React.Component {
     //     super(props);
     // }
     componentDidMount() {
-        {this.props.toggleIsFetching(true)}
-        UsersApi.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.setUsers(data.items)
-            this.props.setTotalCount(data.totalCount)
-            {this.props.toggleIsFetching(false)}
-        })
+        this.props.getUsersThunkCreator()
     }
 
     onPageChanged = (pageNumber) => {
-        {this.props.toggleIsFetching(true)}
+        this.props.toggleIsFetching(true)
         this.props.setCurrentPage(pageNumber)
         UsersApi.getUsers(pageNumber, this.props.pageSize).then(data => {
             this.props.setUsers(data.items)
-            {this.props.toggleIsFetching(false)}
+            this.props.toggleIsFetching(false)
         })
 
     }
@@ -66,7 +61,8 @@ let dispatches = {
     setCurrentPage: setCurrentPageAC,
     setTotalCount: setTotalCountAC,
     toggleIsFetching: toggleIsFetchingAC,
-    toggleIsFolloingBtn
+    toggleIsFolloingBtn,
+    getUsersThunkCreator
 }
 
 export default connect(mapStateToProps, dispatches)(UsersContainer)
