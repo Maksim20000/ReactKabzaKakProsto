@@ -77,31 +77,6 @@ const UsersRedusor = (state = inishialState, action) => {
 
     }
 }
-export const getUsersThunkCreator = (currentPage, pageSize) => {
-    return (dispatch) => {
-        dispatch(toggleIsFetching(true))
-        UsersApi.getUsers(currentPage, pageSize).then(data => {
-            dispatch(setUsers(data.items))
-            dispatch(setTotalCount(data.totalCount))
-            dispatch(toggleIsFetching(false))
-        })
-    }
-}
-export const getUsers = (currentPage, pageSize) => {  // Thunk Creator
-
-    return (dispatch) => {
-
-        dispatch(toggleIsFetching(true));
-
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(setCurrentPage(currentPage));
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
-        });
-    }
-
-}
 
 export const toggleIsFolloingBtn = (isFetching, userId) => {
     return {
