@@ -1,3 +1,4 @@
+import {UsersApi} from "../../API/api";
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -10,7 +11,7 @@ const Following_is_Fetching_Progress = 'Following_is_Fetching'
 let inishialState = {
     users: [],
     pageSize: 100,
-    totalUsersCount: 0,
+    totalUsersCount: null,
     currentPage: 1,
     isFetching: false,
     followingInProgressBtn: []
@@ -78,6 +79,28 @@ const UsersRedusor = (state = inishialState, action) => {
     }
 }
 
+export const onPageChangedThunkCreater = (pageNumber, pageSize) => {
+  return(dispatch) => {
+      dispatch(toggleIsFetchingAC(true))
+      dispatch(setCurrentPageAC(pageNumber))
+      UsersApi.getUsers(pageNumber, pageSize).then(data => {
+          dispatch(setUsersAC(data.items))
+          dispatch(toggleIsFetchingAC(false))
+      })
+  }
+}
+
+export const getUsersThunkCreater = (currentPage, pageSize) => {
+    return(dispatch) => {
+        dispatch(toggleIsFetchingAC(true))
+        UsersApi.getUsers(currentPage, pageSize).then(data => {
+            dispatch(setUsersAC(data.items))
+            dispatch(setTotalCountAC(data.totalCount))
+            dispatch(toggleIsFetchingAC(false))
+        })
+    }
+}
+
 export const toggleIsFolloingBtn = (isFetching, userId) => {
     return {
         type: Following_is_Fetching_Progress,
@@ -106,14 +129,38 @@ export const setCurrentPageAC = (currentPage) =>{
     }
 }
 
-export const followAC = (userID) => {
+export const unfollowThunk = (id) => {
+    return(dispatch) => {
+        dispatch(toggleIsFolloingBtn(true, id))
+        UsersApi.unFollow(id).then(data => {
+            if(data.resultCode === 0){
+                dispatch(unfollowSuccess(id))
+            }
+            dispatch(toggleIsFolloingBtn(false, id))
+        })
+    }
+}
+
+export const followThunk = (id) => {
+    return(dispatch) => {
+        toggleIsFolloingBtn(true, id)
+        UsersApi.Follow(id).then(data => {
+            if(data.resultCode === 0){
+                dispatch(followACSuccess(id))
+            }
+            dispatch(toggleIsFolloingBtn(false, id))
+        })
+    }
+}
+
+export const followACSuccess = (userID) => {
     return{
         type: FOLLOW,
         userID: userID
     }
 }
 
-export const unfollowAC = (userID) => {
+export const unfollowSuccess = (userID) => {
     return{
         type: UNFOLLOW,
         userID: userID

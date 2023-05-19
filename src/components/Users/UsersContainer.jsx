@@ -1,15 +1,12 @@
 import {connect} from "react-redux";
 import {
-    followAC,
-    setCurrentPageAC,
-    setTotalCountAC,
-    setUsersAC, toggleIsFetchingAC, toggleIsFolloingBtn,
-    unfollowAC
+    followThunk, getUsersThunkCreater, onPageChangedThunkCreater,
+    toggleIsFolloingBtn,
+    unfollowThunk
 } from "../../redux/reducers/Users-redusor";
 import React from "react";
 import {Users} from "./Users";
 import {Preoloder} from "../comman/preloader/Preoloder";
-import {UsersApi} from "../../API/api";
 
 
 let mapStateToProps = (state) => {
@@ -24,27 +21,12 @@ let mapStateToProps = (state) => {
 }
 
 class UsersContainer extends React.Component {
-    // По умолчанию
-    // constructor(props) {
-    //     super(props);
-    // }
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-        UsersApi.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.setUsers(data.items)
-            this.props.setTotalCount(data.totalCount)
-            this.props.toggleIsFetching(false)
-        })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.toggleIsFetching(true)
-        this.props.setCurrentPage(pageNumber)
-        UsersApi.getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.setUsers(data.items)
-            this.props.toggleIsFetching(false)
-        })
-
+        this.props.pageChange(pageNumber, this.props.pageSize)
     }
 
     render() {
@@ -60,12 +42,9 @@ class UsersContainer extends React.Component {
 }
 
 let dispatches = {
-    follow: followAC,
-    unfollow:unfollowAC,
-    setUsers: setUsersAC,
-    setCurrentPage: setCurrentPageAC,
-    setTotalCount: setTotalCountAC,
-    toggleIsFetching: toggleIsFetchingAC,
-    toggleIsFolloingBtn
+    getUsers: getUsersThunkCreater,
+    pageChange: onPageChangedThunkCreater,
+    unfollow: unfollowThunk,
+    follow:followThunk
 }
 export default connect(mapStateToProps, dispatches)(UsersContainer)

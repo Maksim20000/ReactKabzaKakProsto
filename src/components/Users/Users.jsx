@@ -2,7 +2,6 @@ import s from "./user.module.css";
 import defaultAvatarUser from "../../assets/img/defaultAvatarUser.jpg";
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {UsersApi} from "../../API/api";
 
 export let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -34,22 +33,12 @@ export let Users = (props) => {
                             </div>
                             <div className={s.buttonFU}>
                                 {u.followed ? <button disabled={props.followingInProgressBtn.some(id => id === u.id)} onClick={() => {
-                                        props.toggleIsFolloingBtn(true, u.id)
-                                        UsersApi.unFollow(u.id).then(data => {
-                                            if(data.resultCode === 0){
-                                                props.unfollow(u.id)
-                                            }
-                                            props.toggleIsFolloingBtn(false, u.id)
-                                        })
+                                        props.unfollow(u.id)
+
                                     }} className='btn btn-danger'>UnFollow</button> :
                                     <button disabled={props.followingInProgressBtn.some(id => id === u.id)} onClick={() => {
-                                        props.toggleIsFolloingBtn(true, u.id)
-                                        UsersApi.Follow(u.id).then(data => {
-                                            if(data.resultCode === 0){
-                                                props.follow(u.id)
-                                            }
-                                            props.toggleIsFolloingBtn(false, u.id)
-                                    })
+                                        props.follow(u.id)
+
                                     }} className='btn btn-success'>Follow</button>}
                             </div>
                         </div>
