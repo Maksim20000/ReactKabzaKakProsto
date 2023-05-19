@@ -18,13 +18,10 @@ function MyPosts(props) {
     let onPostChange = () => {
         let textArea = newPostElement.current.value
         props.addPastChange(textArea)
-        // props.store.dispatch(updateNewPostTextActionCreater(textArea))
     }
 
     let onClickAddPost = () => {
         props.addPostProfile()
-
-        // props.store.dispatch(addNewPostProfileCreater())
     }
 
 

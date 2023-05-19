@@ -1,3 +1,5 @@
+import {ProfileApi} from "../../API/api";
+
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
@@ -88,6 +90,15 @@ const ProfileReducer = (state = initialState, action) => {
 
     }
 }
+
+export const setUsersThunk = (userId) => {
+  return(dispatch) => {
+      ProfileApi.getUsers(userId).then(data => {
+          dispatch(setUserProfileAC(data))
+      })
+  }
+}
+
 export const setUserProfileAC = (profile) => {
     return{
         type: setUserProfile,
