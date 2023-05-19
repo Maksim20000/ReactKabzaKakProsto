@@ -6,6 +6,19 @@ const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/'
 })
 
+export const HeaderApi = {
+    setPhotoAxious: (userId) => {
+        return(
+            instance.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => response)
+        )
+    },
+    authMeAxious: () => {
+        return(
+            instance.get(`https://social-network.samuraijs.com/api/1.0/auth/me`).then(response => response)
+        )
+    }
+}
+
 export const UsersApi = {
     getUsers: (currentPage = 1, pageSize = 1) => {
         return(

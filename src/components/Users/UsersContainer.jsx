@@ -1,7 +1,6 @@
 import {connect} from "react-redux";
 import {
     followThunk, getUsersThunkCreater, onPageChangedThunkCreater,
-    toggleIsFolloingBtn,
     unfollowThunk
 } from "../../redux/reducers/Users-redusor";
 import React from "react";

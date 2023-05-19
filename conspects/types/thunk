@@ -1,14 +1,14 @@
 1) функция создается
     export const getUsersThunkCreater = (currentPage, pageSize) => {
-        return(dispatch) => {
-            dispatch(toggleIsFetchingAC(true))
-            UsersApi.getUsers(currentPage, pageSize).then(data => {
-                dispatch(setUsersAC(data.items))
-                dispatch(setTotalCountAC(data.totalCount))
-                dispatch(toggleIsFetchingAC(false))
-            })
+            return(dispatch) => {
+                dispatch(toggleIsFetchingAC(true))
+                UsersApi.getUsers(currentPage, pageSize).then(data => {
+                    dispatch(setUsersAC(data.items))
+                    dispatch(setTotalCountAC(data.totalCount))
+                    dispatch(toggleIsFetchingAC(false))
+                })
+            }
         }
-    }
 
 
 2) thunkMiddleware - промежуточный уровень

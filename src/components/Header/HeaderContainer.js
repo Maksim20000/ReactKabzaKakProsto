@@ -1,28 +1,14 @@
 import React from "react";
 import Header from "./Header";
 import s from './Header.module.css'
-import axios from "axios";
 import {connect} from "react-redux";
-import {setAuthUserData, setPhotoAuth} from "../../redux/reducers/auth-reduser";
+import {authMeThunk, setAuthUserData, setPhotoAuth, setUsersThunk} from "../../redux/reducers/auth-reduser";
 class HeaderContainer extends React.Component {
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{withCredentials: true})
-            .then(responce => {
-                if(responce.data.resultCode === 0){
-                    let {login, id, email} = responce.data.data
-                    this.props.setAuthUserData(id, email, login)
-                }else{
-                    alert('Не приходят данные')
-                }
-        })
+        this.props.authMeThunk()
 
-        let userId = this.props.userId
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(
-            response => {
-                this.props.setPhotoAuth(response.data.photos.small)
-            }
-        )
+        this.props.setUsersThunk(this.props.userId)
     }
 
     render() {
@@ -44,7 +30,9 @@ const mapStateToProps = (state) => {
 
 const dispatches = {
     setAuthUserData,
-    setPhotoAuth
+    setPhotoAuth,
+    setUsersThunk,
+    authMeThunk
 }
 
 export default connect(mapStateToProps, dispatches)(HeaderContainer)

@@ -1,3 +1,5 @@
+import {HeaderApi} from "../../API/api";
+
 const SET_USER_DATA = 'SET_USER_DATA'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const SET_PHOTO_AUTH = 'SET_PHOTO_AUTH'
@@ -34,6 +36,29 @@ const AuthReducer = (state = initialState, action) => {
             return {...state}
 
     }
+}
+
+export const authMeThunk = () => {
+    return(dispatch) => {
+        HeaderApi.authMeAxious().then(responce => {
+            if(responce.data.resultCode === 0){
+                let {login, id, email} = responce.data.data
+                dispatch(setAuthUserData(id, email, login))
+            }else{
+                alert('Не приходят данные')
+            }
+        })
+    }
+}
+
+export const setUsersThunk = (userId) => {
+  return(dispatch) => {
+      HeaderApi.setPhotoAxious(userId).then(
+          response => {
+              dispatch(setPhotoAuth(response.data.photos.small))
+          }
+      )
+  }
 }
 
 export const setAuthUserData = (userId, email, login) => {
