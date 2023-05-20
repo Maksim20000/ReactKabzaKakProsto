@@ -31,6 +31,9 @@ function Navbar(props) {
                 <div>
                     <NavLink className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' to='/register'>Register</NavLink>
                 </div>
+                <div className={`${s.nav} ${s.item} ${s.white}`}>
+                    <NavLink className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' to='/login'>Login</NavLink>
+                </div>
 
             </div>
         </nav>

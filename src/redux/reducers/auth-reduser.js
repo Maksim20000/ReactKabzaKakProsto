@@ -45,7 +45,7 @@ export const authMeThunk = () => {
                 let {login, id, email} = responce.data.data
                 dispatch(setAuthUserData(id, email, login))
             }else{
-                alert('Не приходят данные')
+                alert('Не приходят данные вашего аккаунта')
             }
         })
     }

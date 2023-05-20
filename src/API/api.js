@@ -39,7 +39,7 @@ export const UsersApi = {
 }
 
 export const ProfileApi = {
-    getUsers: (userId) => {
+    getUsersPofile: (userId) => {
         return(
             instance.get(`profile/`+ userId).then(responce => responce.data)
         )

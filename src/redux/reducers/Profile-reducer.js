@@ -93,7 +93,7 @@ const ProfileReducer = (state = initialState, action) => {
 
 export const setUsersThunk = (userId) => {
   return(dispatch) => {
-      ProfileApi.getUsers(userId).then(data => {
+      ProfileApi.getUsersPofile(userId).then(data => {
           dispatch(setUserProfileAC(data))
       })
   }

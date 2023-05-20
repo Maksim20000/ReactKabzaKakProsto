@@ -3,7 +3,7 @@ import './App.css'
 import {Route, Routes} from "react-router-dom";
 import {Setting} from "./components/Setting/Setting";
 import {Music} from "./components/Music/Music";
-import {Login} from "./components/Login/Login";
+import LoginPage from "./components/Login/Login";
 import New from "./components/New/New";
 import Navbar from "./components/NavBar/Navbar_header";
 import {Base} from "./components/Base/Base";
@@ -30,7 +30,7 @@ function App(props) {
                         <Route path="/new" element={<New/>}/>
                         <Route path="/music" element={<Music/>}/>
                         <Route path="/setting" element={<Setting/>}/>
-                        <Route path='/login' element={<Login/>}/>
+                        <Route path='/login' element={<LoginPage />}/>
                         <Route path='/register' element={<Register/>}/>
                     </Routes>
                 </div>

@@ -116,6 +116,10 @@
 			2) и result = a && b;
 			3) не result = !value;
 
+13) если мы импортируем по дефолту мы можем писать в имени переменной когда мы будем ее вызывать любое имя
+    import Login from "./components/Login/Login";
+        или
+    import LoginPage from "./components/Login/Login";
 
 
 
