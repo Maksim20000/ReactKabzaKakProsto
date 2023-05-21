@@ -121,6 +121,10 @@
         или
     import LoginPage from "./components/Login/Login";
 
+14) чтобы проверить зареган ли пользователь на сайте используем редирект а именно берем из бд инфу
+    if(!this.props.isAuth){
+        return <Navigate to={'/login'} />
+    }
 
 
 

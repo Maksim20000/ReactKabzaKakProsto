@@ -3,11 +3,11 @@ import {connect} from "react-redux";
 import Profile from "./Profile";
 import {setUserProfileAC, setUsersThunk, toggleIsFetchingACToProfile} from "../../redux/reducers/Profile-reducer";
 import {
-    Navigate,
     useLocation,
     useNavigate,
     useParams,
 } from "react-router-dom";
+import {withAuthRedirect} from "../../hoc/isAuthRedirect";
 
 function withRouter(Component) {
     function ComponentWithRouterProp(props) {
@@ -35,9 +35,7 @@ class ProfileContainer extends React.Component{
         this.props.setUsersThunk(userId)
     }
     render(){
-        if(!this.props.isAuth){
-            return <Navigate to={'/login'} />
-        }
+
         return(
             <div>
                 <Profile {...this.props}/>
@@ -46,10 +44,11 @@ class ProfileContainer extends React.Component{
     }
 }
 
+
+
 let mapStateToProps = (state) =>{
     return {
-        profile: state.profilePage.profile,
-        isAuth: state.auth.isAuth
+        profile: state.profilePage.profile
     }
 }
 
@@ -59,5 +58,7 @@ let dispatches = {
     setUsersThunk
 }
 
-let withUrlDataContainerComponent = withRouter(ProfileContainer)
+
+let authRedirectComponent = withAuthRedirect(ProfileContainer)
+let withUrlDataContainerComponent = withRouter(authRedirectComponent)
 export default connect(mapStateToProps, dispatches)(withUrlDataContainerComponent)

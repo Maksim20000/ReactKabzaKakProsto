@@ -4,7 +4,7 @@ import React from "react";
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./MessageDialog/Message";
-import {Navigate} from "react-router-dom";
+import {withAuthRedirect} from "../../hoc/isAuthRedirect";
 
 
 function Dialogs(props){
@@ -22,9 +22,6 @@ function Dialogs(props){
     let onNewMessageChange = () => {
         let body = refReact.current.value
         props.onNewMessageChange(body)
-    }
-    if(!props.isAuth){
-        return <Navigate to={'/login'} />
     }
 
     return (
@@ -64,7 +61,10 @@ let dispatch = {
     onNewMessageChange:updateNewMessageBodyCreater
 }
 
-const DialogsContainer = connect(MapToStateProps, dispatch)(Dialogs)
+
+
+let authRedirectComponent = withAuthRedirect(Dialogs)
+const DialogsContainer = connect(MapToStateProps, dispatch)(authRedirectComponent)
 
 
 export default DialogsContainer
