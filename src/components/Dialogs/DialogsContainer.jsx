@@ -5,6 +5,7 @@ import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./MessageDialog/Message";
 import {withAuthRedirect} from "../../hoc/isAuthRedirect";
+import {compose} from "redux";
 
 
 function Dialogs(props){
@@ -49,8 +50,7 @@ function Dialogs(props){
 
 let MapToStateProps = (state) => {
     return {
-        state: state,
-        isAuth: state.auth.isAuth
+        state: state
     }
 
 }
@@ -61,10 +61,9 @@ let dispatch = {
     onNewMessageChange:updateNewMessageBodyCreater
 }
 
+export default compose(
+    connect(MapToStateProps, dispatch),
+    withAuthRedirect
+)(Dialogs)
 
 
-let authRedirectComponent = withAuthRedirect(Dialogs)
-const DialogsContainer = connect(MapToStateProps, dispatch)(authRedirectComponent)
-
-
-export default DialogsContainer

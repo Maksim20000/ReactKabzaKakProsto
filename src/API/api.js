@@ -9,12 +9,12 @@ const instance = axios.create({
 export const HeaderApi = {
     setPhotoAxious: (userId) => {
         return(
-            instance.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => response)
+            instance.get(`profile/${userId}`).then(response => response)
         )
     },
     authMeAxious: () => {
         return(
-            instance.get(`https://social-network.samuraijs.com/api/1.0/auth/me`).then(response => response)
+            instance.get(`auth/me`).then(response => response)
         )
     }
 }

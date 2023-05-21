@@ -8,6 +8,7 @@ import {
     useParams,
 } from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/isAuthRedirect";
+import {compose} from "redux";
 
 function withRouter(Component) {
     function ComponentWithRouterProp(props) {
@@ -58,7 +59,10 @@ let dispatches = {
     setUsersThunk
 }
 
+export default compose(
+    withRouter,
+    withAuthRedirect,
+    connect(mapStateToProps, dispatches)
+)(ProfileContainer)
 
-let authRedirectComponent = withAuthRedirect(ProfileContainer)
-let withUrlDataContainerComponent = withRouter(authRedirectComponent)
-export default connect(mapStateToProps, dispatches)(withUrlDataContainerComponent)
+

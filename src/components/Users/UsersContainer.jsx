@@ -6,6 +6,8 @@ import {
 import React from "react";
 import {Users} from "./Users";
 import {Preoloder} from "../comman/preloader/Preoloder";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/isAuthRedirect";
 
 
 let mapStateToProps = (state) => {
@@ -46,4 +48,8 @@ let dispatches = {
     unfollow: unfollowThunk,
     follow:followThunk
 }
-export default connect(mapStateToProps, dispatches)(UsersContainer)
+
+export default compose(
+    connect(mapStateToProps, dispatches),
+    withAuthRedirect
+)(UsersContainer)
