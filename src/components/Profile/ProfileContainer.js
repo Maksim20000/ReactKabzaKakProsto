@@ -7,7 +7,6 @@ import {
     useNavigate,
     useParams,
 } from "react-router-dom";
-import {withAuthRedirect} from "../../hoc/isAuthRedirect";
 import {compose} from "redux";
 
 function withRouter(Component) {
@@ -61,7 +60,6 @@ let dispatches = {
 
 export default compose(
     withRouter,
-    withAuthRedirect,
     connect(mapStateToProps, dispatches)
 )(ProfileContainer)
 

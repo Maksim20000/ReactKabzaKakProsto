@@ -131,6 +131,25 @@
             (тоесьт передаем в первой функциии данные а во 2 мы ими пользуемся )
 
 
+16) в классовой компонете мы вызываем методы
+    activateEditMode() {
+            this.state.editMode = true
+            чтобы в данном примере все работало нужно испольщовать
+            this.forceUpdate()
+        }
+
+    в в вызове пишу bind
+    <div><input onClick={this.activateEditMode.bind(this)} value={this.props.status}/></div>
+
+    правильный синтаксис
+    activateEditMode() {
+            alert(this.state.editMode) // true
+            this.setState( {
+                editMode: false // переносится на потом он асинхронный поэтому переносит на потом
+            })
+            alert(this.state.editMode) // true
+
+
 
 
 
