@@ -1,3 +1,22 @@
 .img{
     border-radius: 100px;
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+}
+
+.bg{
+    background-color: #fff;
+    border: solid black 3px;
+    border-radius: 50px;
+    max-width: 95%;
+    margin: 2%;
+    height: 300px;
+    align-items: center;
+    display: flex;
+}
+
+.statusProfile{
+    margin: 10px 30px 1px 300px;
+
 }
