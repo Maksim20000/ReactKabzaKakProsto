@@ -9,7 +9,14 @@ export class StatusProfile extends React.Component{
             editMode: false
         })
     }
-    disActivateEditMode() {
+    // disActivateEditMode() {
+    //     this.setState( {
+    //         editMode: true
+    //     })
+    // }
+
+    disActivateEditMode = () => {
+        debugger
         this.setState( {
             editMode: true
         })
@@ -20,7 +27,7 @@ export class StatusProfile extends React.Component{
             <>
                 {this.state.editMode
                     ? <div><input autoFocus={true} onBlur={this.activateEditMode.bind(this)} value={this.props.status}/></div>
-                    : <div onDoubleClick={ this.disActivateEditMode.bind(this) }>{this.props.status}</div>
+                    : <div onClick={ this.disActivateEditMode }>{this.props.status}</div>
                 }
             </>)
     }
