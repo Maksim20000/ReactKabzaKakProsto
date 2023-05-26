@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const instance = axios.create({
     withCredentials: true,
-    headers: {'API-KEY': 'f4369178-3f77-4cca-a2e8-83509a9dd95e'},
+    headers: {'API-KEY': 'dab2cd6e-a930-4ed9-a713-3359dba39df3'},
     baseURL: 'https://social-network.samuraijs.com/api/1.0/'
 })
 
@@ -41,7 +41,19 @@ export const UsersApi = {
 export const ProfileApi = {
     getUsersPofile: (userId) => {
         return(
-            instance.get(`profile/`+ userId).then(responce => responce.data)
+            instance.get(`profile/`+ userId).then(responce => responce)
+        )
+    },
+    // https://social-network.samuraijs.com/api/1.0/profile/status/2
+    getStatus: (userId) => {
+        return(
+            instance.get('profile/status/' + userId).then(response => response)
+        )
+    },
+    updateStatus: (status, userId) => {
+        return(
+            instance.put(`profile/status/`, {status: status})
         )
     }
+
 }

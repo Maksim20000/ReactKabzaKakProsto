@@ -2,6 +2,7 @@ import s from './ProfileStatusTest.module.css'
 import {StatusProfile} from "./Status/StatusProfile";
 import React from "react";
 export class ProfileTestStatus extends React.Component{
+
     render() {
         return(
             <div className={s.bg}>
@@ -11,7 +12,9 @@ export class ProfileTestStatus extends React.Component{
                          className={s.img}
                     />
                     <div className={s.statusProfile}>
-                        <StatusProfile status={this.props.status} />
+                        <StatusProfile status={this.props.status}
+                                       updateStatusThunk={this.props.updateStatusThunk}
+                        />
                     </div>
                 </div>
             </div>

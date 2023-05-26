@@ -1,7 +1,12 @@
 import React from 'react'
 import {connect} from "react-redux";
 import Profile from "./Profile";
-import {setUserProfileAC, setUsersThunk, toggleIsFetchingACToProfile} from "../../redux/reducers/Profile-reducer";
+import {
+    GetStatusThunk,
+    setUserProfileAC,
+    setUsersThunk,
+    toggleIsFetchingACToProfile, updateStatusThunk
+} from "../../redux/reducers/Profile-reducer";
 import {
     useLocation,
     useNavigate,
@@ -30,15 +35,16 @@ class ProfileContainer extends React.Component{
     componentDidMount() {
         let userId = this.props.router.params.userId
         if(!userId){
-            userId = 2
+            userId = 28954
         }
         this.props.setUsersThunk(userId)
+        this.props.GetStatusThunk(userId)
     }
     render(){
 
         return(
             <div>
-                <Profile {...this.props}/>
+                <Profile {...this.props} />
             </div>
         )
     }
@@ -48,14 +54,17 @@ class ProfileContainer extends React.Component{
 
 let mapStateToProps = (state) =>{
     return {
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
+        status: state.profilePage.status
     }
 }
 
 let dispatches = {
     toggleIsFetchingACToProfile,
     setUserProfileAC,
-    setUsersThunk
+    setUsersThunk,
+    GetStatusThunk,
+    updateStatusThunk
 }
 
 export default compose(

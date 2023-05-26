@@ -4,6 +4,7 @@ const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const setUserProfile = 'setUserProfileAC'
+const SetStuatus = 'SET_STUTUS'
 
 let initialState = {
     posts: [
@@ -52,10 +53,16 @@ let initialState = {
     ],
     newPostText: 'Привет',
     isFetching: false,
-    profile: null
+    profile: null,
+    status: ''
 }
 const ProfileReducer = (state = initialState, action) => {
     switch (action.type) {
+        case SetStuatus:
+            return {
+                ...state,
+                status: action.status
+            }
         case setUserProfile:
             return {
                 ...state, profile: action.profile
@@ -91,10 +98,32 @@ const ProfileReducer = (state = initialState, action) => {
     }
 }
 
+export const setStatusAC = (status) => {
+  return{
+      type:SetStuatus,
+      status
+  }
+}
+
+export const GetStatusThunk = (userId) => (dispatch) =>{
+        ProfileApi.getStatus(userId).then(response => {
+            if(response.status === 200){
+                dispatch(setStatusAC(response.data))
+            }else{
+                alert('не приходит статус')
+            }
+        })
+}
+export const updateStatusThunk = (status) => (dispatch) => {
+    ProfileApi.updateStatus(status).then(response => {
+        dispatch(setStatusAC(status))
+    })
+}
+
 export const setUsersThunk = (userId) => {
   return(dispatch) => {
-      ProfileApi.getUsersPofile(userId).then(data => {
-          dispatch(setUserProfileAC(data))
+      ProfileApi.getUsersPofile(userId).then(response => {
+          dispatch(setUserProfileAC(response.data))
       })
   }
 }

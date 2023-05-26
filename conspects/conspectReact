@@ -154,6 +154,17 @@
 17) бновляются компоненты с помощью команды
      npm i --save --save-exact react-scripts@5.0.2
 
+18) get, delete они не могут передать ничего на сервер, кроме адресной строки(url)
+    url/{id}?city=minsk
+
+    post, put подразумевает что мы должны уметь отправлять на сервак (request payloader - полезную нагрузку)
+
+19) чтобы создать реф мы нацепляем на input
+    ? <div><input ref={this.statusInputRef} /></div>
+    и за пределами render
+    statusInputRef = React.createRef()
+
+
 
 
 

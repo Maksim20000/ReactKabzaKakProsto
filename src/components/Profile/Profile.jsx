@@ -10,7 +10,9 @@ function Profile(props) {
         <div className={s.whiteBG}>
 
             <ProfileInfo profile={props.profile}/>
-            <ProfileTestStatus status={'Привет мой друг'}/>
+            <ProfileTestStatus status={props.status}
+                               updateStatusThunk={props.updateStatusThunk}
+            />
             <MyPostsContainer />
         </div>
     )
