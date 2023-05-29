@@ -5,8 +5,7 @@ const Login = (props) => {
         console.log(formData)
     }
     return(
-        <div>
-            <h1>Login</h1>
+        <div className={'d-flex justify-content-center'}>
             <LoginReduxForm onSubmit={onSubmit} />
         </div>
     )
