@@ -1,0 +1,34 @@
+1) формой может являться логин на сайт
+2) все форм пишутся в теге form
+3)submite - взять все данные которые мне пришли и отправить на сервак(так раньше было)
+4) import { reducer as formReducer } from 'redux-form'
+
+    let redusers = combineReducers({
+        profilePage: ProfileReducer,
+        dialogsPage: DialogsRedusor,
+        siteBar: SiteBarRedusor,
+        usersPage: UsersRedusor,
+        auth: AuthReducer,
+        form: formReducer - важно сделать именно form
+    });
+
+5) важно вызывается после компоненты
+const LoginReduxForm = reduxForm({
+       form: 'login' - уникальное строковое имя
+   })(ContactForm)
+
+
+6) вешаемна компоненту где ма вызываем формочку onSubmit
+const Login = (props) => {
+    const onSubmit = (formData) => {
+        console.log(formData)
+    }
+    return(
+        <div>
+            <h1>Login</h1>
+            <LoginReduxForm onSubmit={onSubmit} />
+        </div>
+    )
+}
+
+
