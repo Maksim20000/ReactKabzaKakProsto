@@ -1,7 +1,5 @@
 import {ProfileApi} from "../../API/api";
-
 const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const setUserProfile = 'setUserProfileAC'
 const SetStuatus = 'SET_STUTUS'
@@ -75,7 +73,7 @@ const ProfileReducer = (state = initialState, action) => {
         case ADD_POST:
             let newPost = {
                 id: 11,
-                message: state.newPostText,
+                message: action.body,
                 likesCount: 5545454,
                 name: 'Андрей',
                 img: 'https://avatars.mds.yandex.net/i?id=8e1656b53d712f3d1d39bc3ecb78c46e4d0c80fc-8196573-images-thumbs&n=13'
@@ -83,13 +81,7 @@ const ProfileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newPostText: '',
-                posts: [...state.posts, newPost]
-            }
-
-        case UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.body
+                posts: [newPost, ...state.posts]
             }
 
         default:
@@ -142,18 +134,12 @@ export const toggleIsFetchingACToProfile = (isFeching) => {
     }
 }
 
-export const addNewPostProfileCreater = () => {
+export const addNewPostProfileCreater = (body) => {
     return {
         type: ADD_POST,
-        text: 'плплп'
+        body
     }
 }
 
-export const updateNewPostTextActionCreater = (textArea) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        body: textArea
-    }
-}
 
 export default ProfileReducer

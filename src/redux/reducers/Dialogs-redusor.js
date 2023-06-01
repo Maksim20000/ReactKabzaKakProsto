@@ -1,4 +1,3 @@
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
 const SENT_MESSAGE = 'SENT_MESSAGE'
 
 let inishialState = {
@@ -23,21 +22,13 @@ let inishialState = {
 
 const DialogsRedusor = (state = inishialState, action) => {
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_BODY:
-            return {
-                ...state,
-                newMessageBody: action.body
-            }
 
         case SENT_MESSAGE:
-            let newPostText = {
-                id: 7,
-                message: state.newMessageBody
-            }
+            let body = action.newMessageBody
             return {
                 ...state,
                 newMessageBody: '',
-                messages: [...state.messages, newPostText]
+                messages: [...state.messages, {id: 6, message: body}]
             }
 
         default:
@@ -46,17 +37,10 @@ const DialogsRedusor = (state = inishialState, action) => {
     }
 }
 
-export let sendMessageCreater = () => {
+export let sendMessageCreater = (newMessageBody) => {
     return {
         type: SENT_MESSAGE,
-        text: 'лалала'
-    }
-}
-
-export let updateNewMessageBodyCreater = (body) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_BODY,
-        body: body
+        newMessageBody
     }
 }
 

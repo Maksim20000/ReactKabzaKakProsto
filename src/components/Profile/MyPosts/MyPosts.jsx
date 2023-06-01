@@ -1,12 +1,10 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./post/Post";
+import {AddNewPostForm} from "./NewMessageFormProfile/NewMessageFormProfile";
 
 function MyPosts(props) {
-    let posts = props.posts
-
-    let newPostElement = React.createRef()
-    const profileElement = posts.map((el) => <Post
+    const profileElement = props.posts.map((el) => <Post
         key={el.id}
         name={el.name}
         likesCount={el.likesCount}
@@ -14,16 +12,9 @@ function MyPosts(props) {
         message={el.message}
     />)
 
-
-    let onPostChange = () => {
-        let textArea = newPostElement.current.value
-        props.addPastChange(textArea)
+    const onSubmitAddPost = (formData) => {
+        props.addPostProfile(formData.NewMessgeProfile)
     }
-
-    let onClickAddPost = () => {
-        props.addPostProfile()
-    }
-
 
     return (
         <div className={s.postsBlock}>
@@ -31,17 +22,8 @@ function MyPosts(props) {
                 <h3>My post</h3>
             </div>
             <div className='d-flex'>
-                {/*<div>*/}
-                {/*    <textarea onChange={onPostChange} ref={ newPostElement } value={props.newPostText}/>*/}
-                {/*</div>*/}
-                {/*`${s.nav} ${s.item} ${s.white}`*/}
-                <div className={`${s.textArea}`}>
-                    <textarea className="form-control" placeholder="Leave a comment here" onChange={onPostChange} ref={ newPostElement } value={props.newPostText}
-                              id="floatingTextarea"></textarea>
-                </div>
-                <div>
-                    <button onClick={onClickAddPost} className={`${'btn'} ${'btn-success'} ${s.button}`}>add post</button>
-                </div>
+                <AddNewPostForm onSubmit={onSubmitAddPost}
+                                {...props}/>
             </div>
             <div className={s.posts}>
                 { profileElement }

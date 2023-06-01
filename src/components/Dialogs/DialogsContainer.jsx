@@ -1,29 +1,29 @@
 import {connect} from "react-redux";
-import {sendMessageCreater, updateNewMessageBodyCreater} from "../../redux/reducers/Dialogs-redusor";
+import {sendMessageCreater} from "../../redux/reducers/Dialogs-redusor";
 import React from "react";
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./MessageDialog/Message";
 import {withAuthRedirect} from "../../hoc/isAuthRedirect";
 import {compose} from "redux";
+import { reduxForm} from "redux-form";
+import {MessageDialogsFormRedux} from "./DialogsForm/DialogsForm";
 
 
 function Dialogs(props){
-    let refReact = React.createRef()
-
     let state = props.state.dialogsPage
 
     let dialogsElements = state.dialogs.map( d => <DialogItem id={d.id} key={d.id} name={d.name} /> )
     let MessagesElements = state.messages.map( m => <Message message= {m.message} key={m.id}/> )
 
-    let onClickButtonDialogs = () => {
-        props.onSendMessageClick()
+    // const onSubmit = (formData) => {
+        // console.log(formData.newMessageBody)
+    // }
+
+    const AddNewMessage = (values) => {
+        props.onSendMessageClick(values.newMessageBody)
     }
 
-    let onNewMessageChange = () => {
-        let body = refReact.current.value
-        props.onNewMessageChange(body)
-    }
 
     return (
         <div className={s.dialogs}>
@@ -33,20 +33,17 @@ function Dialogs(props){
             <div className={s.messages}>
                 <div>{MessagesElements}</div>
                 <div>
-                    <div className='d-flex'><textarea
-                        className="form-control"
-                        onChange={ onNewMessageChange }
-                        value={ state.newMessageBody }
-                        ref = { refReact}
-                        placeholder='Нажмин на меня!'></textarea></div>
-                    <div><button onClick={ onClickButtonDialogs } className='btn btn-success'>Кнопка</button>
-                    </div>
-
+                    <MessageDialogsFormRedux onSubmit={AddNewMessage} state={state}/>
                 </div>
             </div>
         </div>
     )
 }
+
+const MyMessageForm = reduxForm({
+    form: 'DialogAddMessageForm'
+})(Dialogs)
+
 
 let MapToStateProps = (state) => {
     return {
@@ -54,16 +51,13 @@ let MapToStateProps = (state) => {
     }
 
 }
-
-
 let dispatch = {
     onSendMessageClick:sendMessageCreater,
-    onNewMessageChange:updateNewMessageBodyCreater
 }
 
 export default compose(
     connect(MapToStateProps, dispatch),
     withAuthRedirect
-)(Dialogs)
+)(MyMessageForm)
 
 

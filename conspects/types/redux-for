@@ -31,4 +31,6 @@ const Login = (props) => {
     )
 }
 
+7) <MessageDialogsFormRedux onSubmit={onSubmit} - выхви эту функцию когда ты будешь submit />
+
 
