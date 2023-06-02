@@ -3,6 +3,8 @@ import s from './MyPosts.module.css'
 import Post from "./post/Post";
 import {AddNewPostForm} from "./NewMessageFormProfile/NewMessageFormProfile";
 
+
+
 function MyPosts(props) {
     const profileElement = props.posts.map((el) => <Post
         key={el.id}

@@ -7,7 +7,7 @@ import React from "react";
 import {Users} from "./Users";
 import {Preoloder} from "../comman/preloader/Preoloder";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../hoc/isAuthRedirect";
+import {withAuthRedirect} from "../../assets/hoc/isAuthRedirect";
 
 
 let mapStateToProps = (state) => {
