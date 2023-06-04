@@ -1,4 +1,4 @@
-import {HeaderApi} from "../../API/api";
+import {AuthMe, HeaderApi} from "../../API/api";
 
 const SET_USER_DATA = 'SET_USER_DATA'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
@@ -18,7 +18,7 @@ const AuthReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data,
-                isAuth: true
+                isAuth: action.isAuth
             }
 
         case SET_PHOTO_AUTH:
@@ -38,6 +38,7 @@ const AuthReducer = (state = initialState, action) => {
     }
 }
 
+// авторизуем меня
 export const authMeThunk = () => {
     return(dispatch) => {
         HeaderApi.authMeAxious().then(responce => {
@@ -51,6 +52,7 @@ export const authMeThunk = () => {
     }
 }
 
+// ставлю фото
 export const setUsersThunk = (userId) => {
   return(dispatch) => {
       HeaderApi.setPhotoAxious(userId).then(
@@ -61,14 +63,15 @@ export const setUsersThunk = (userId) => {
   }
 }
 
-export const setAuthUserData = (userId, email, login) => {
+export const setAuthUserData = (userId, email, login, isAuth = true) => {
     return{
         type: SET_USER_DATA,
         data: {
             userId,
             email,
-            login
-        }
+            login,
+        },
+        isAuth
     }
 }
 
@@ -77,6 +80,22 @@ export const setPhotoAuth = (photo) => {
         type: SET_PHOTO_AUTH,
         photo
     }
+}
+
+export const LoginThunk = (email, password, rememberMe) => (dispatch) => {
+    AuthMe.Login(email, password, rememberMe).then(response => {
+        if(response.data.resultCode === 0){
+            dispatch(authMeThunk(setAuthUserData))
+        }
+    })
+}
+
+export const LoginOutThunk = () => (dispatch) => {
+    AuthMe.logOut().then(response => {
+        if(response.data.resultCode === 0){
+            dispatch(setAuthUserData(null, null, null, false))
+        }
+    })
 }
 
 export default AuthReducer

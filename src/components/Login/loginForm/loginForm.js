@@ -34,8 +34,8 @@ const LoginForm = (props) => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                    <Field type="password" className="form-control" component={Input} id="exampleInputPassword1"
-                           name={'password'}
+                    <Field className="form-control" component={Input} id="exampleInputPassword1"
+                           name={'password'} type={"password"}
                            validate={[required, maxLength30, minLength2]}
                     />
                 </div>
@@ -43,7 +43,7 @@ const LoginForm = (props) => {
                     <Field type="checkbox" className="form-check-input" component={'input'} id="exampleCheck1"
                            name={'checkBox'}
                     />
-                    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+                    <Field component={'checkbox'} className="form-check-label" htmlFor="exampleCheck1">Check me out</Field>
                 </div>
                 <button type="submit" className="btn btn-success">Submit</button>
             </div>

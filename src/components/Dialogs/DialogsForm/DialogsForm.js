@@ -18,9 +18,7 @@ const minLength2 = minLenghtCreter(3)
                             validate={[required, maxLength30, minLength2]}
                             name={'newMessageBody'}
                         ></Field></div>
-                  {/*<div>*/}
-                  {/*    */}
-                  {/*</div>*/}
+
           </form>
       </>
   )

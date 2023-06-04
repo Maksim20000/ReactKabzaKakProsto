@@ -2,7 +2,13 @@ import React from "react";
 import Header from "./Header";
 import s from './Header.module.css'
 import {connect} from "react-redux";
-import {authMeThunk, setAuthUserData, setPhotoAuth, setUsersThunk} from "../../redux/reducers/auth-reduser";
+import {
+    authMeThunk,
+    LoginOutThunk,
+    setAuthUserData,
+    setPhotoAuth,
+    setUsersThunk
+} from "../../redux/reducers/auth-reduser";
 class HeaderContainer extends React.Component {
 
     componentDidMount() {
@@ -32,7 +38,8 @@ const dispatches = {
     setAuthUserData,
     setPhotoAuth,
     setUsersThunk,
-    authMeThunk
+    authMeThunk,
+    LoginOutThunk
 }
 
 export default connect(mapStateToProps, dispatches)(HeaderContainer)

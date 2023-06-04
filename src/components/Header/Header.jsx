@@ -20,9 +20,13 @@ class Header extends React.Component{
                                 }
 
                                 <h3 className={s.titleName}>{this.props.login}</h3>
+                                <div>
+                                    <button onClick={this.props.LoginOutThunk}>
+                                        logOut
+                                    </button>
+                                </div>
                             </div>
-                            :
-                            <NavLink to={'/login'}><Button variant="outline-dark">Login</Button></NavLink>
+                            : <NavLink to={'/login'}><Button variant="outline-dark">Login</Button></NavLink>
                         }
 
                     </div>
@@ -30,5 +34,7 @@ class Header extends React.Component{
         )
     }
 }
+
+
 
 export default Header;

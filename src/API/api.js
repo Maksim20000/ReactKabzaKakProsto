@@ -6,6 +6,14 @@ const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/'
 })
 
+export const AuthMe = {
+    Login(email, password, rememberMe = false){
+        return instance.post(`auth/login`, { email, password, rememberMe })
+    },
+    logOut(){
+        return instance.delete(`auth/login`)
+    }
+}
 export const HeaderApi = {
     setPhotoAxious: (userId) => {
         return(
@@ -50,7 +58,7 @@ export const ProfileApi = {
             instance.get('profile/status/' + userId).then(response => response)
         )
     },
-    updateStatus: (status, userId) => {
+    updateStatus: (status) => {
         return(
             instance.put(`profile/status/`, {status: status})
         )
