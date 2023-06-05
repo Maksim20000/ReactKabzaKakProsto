@@ -5,8 +5,8 @@ import {connect} from "react-redux";
 import {
     authMeThunk,
     LoginOutThunk,
-    setAuthUserData,
-    setPhotoAuth,
+    setAuthUserDataCreater,
+    setPhotoAuthCreator,
     setUsersThunk
 } from "../../redux/reducers/auth-reduser";
 class HeaderContainer extends React.Component {
@@ -35,8 +35,8 @@ const mapStateToProps = (state) => {
 }
 
 const dispatches = {
-    setAuthUserData,
-    setPhotoAuth,
+    setAuthUserDataCreater,
+    setPhotoAuthCreator,
     setUsersThunk,
     authMeThunk,
     LoginOutThunk

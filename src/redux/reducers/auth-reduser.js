@@ -44,7 +44,7 @@ export const authMeThunk = () => {
         HeaderApi.authMeAxious().then(responce => {
             if(responce.data.resultCode === 0){
                 let {login, id, email} = responce.data.data
-                dispatch(setAuthUserData(id, email, login))
+                dispatch(setAuthUserDataCreater(id, email, login))
             }else{
                 alert('Не приходят данные вашего аккаунта')
             }
@@ -57,13 +57,13 @@ export const setUsersThunk = (userId) => {
   return(dispatch) => {
       HeaderApi.setPhotoAxious(userId).then(
           response => {
-              dispatch(setPhotoAuth(response.data.photos.small))
+              dispatch(setPhotoAuthCreator(response.data.photos.small))
           }
       )
   }
 }
 
-export const setAuthUserData = (userId, email, login, isAuth = true) => {
+export const setAuthUserDataCreater = (userId, email, login, isAuth = true) => {
     return{
         type: SET_USER_DATA,
         data: {
@@ -75,7 +75,7 @@ export const setAuthUserData = (userId, email, login, isAuth = true) => {
     }
 }
 
-export const setPhotoAuth = (photo) => {
+export const setPhotoAuthCreator = (photo) => {
     return{
         type: SET_PHOTO_AUTH,
         photo
@@ -85,7 +85,7 @@ export const setPhotoAuth = (photo) => {
 export const LoginThunk = (email, password, rememberMe) => (dispatch) => {
     AuthMe.Login(email, password, rememberMe).then(response => {
         if(response.data.resultCode === 0){
-            dispatch(authMeThunk(setAuthUserData))
+            dispatch(authMeThunk(setAuthUserDataCreater))
         }
     })
 }
@@ -93,7 +93,7 @@ export const LoginThunk = (email, password, rememberMe) => (dispatch) => {
 export const LoginOutThunk = () => (dispatch) => {
     AuthMe.logOut().then(response => {
         if(response.data.resultCode === 0){
-            dispatch(setAuthUserData(null, null, null, false))
+            dispatch(setAuthUserDataCreater(null, null, null, false))
         }
     })
 }
