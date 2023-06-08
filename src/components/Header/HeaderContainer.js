@@ -3,18 +3,14 @@ import Header from "./Header";
 import s from './Header.module.css'
 import {connect} from "react-redux";
 import {
-    authMeThunk,
     LoginOutThunk,
     setAuthUserDataCreater,
-    setPhotoAuthCreator,
-    setUsersThunk
+    setPhotoAuthCreator, setUsersThunkPhoto
 } from "../../redux/reducers/auth-reduser";
 class HeaderContainer extends React.Component {
 
     componentDidMount() {
-        this.props.authMeThunk()
-
-        this.props.setUsersThunk(this.props.userId)
+       //this.props.setUsersThunkPhoto(this.props.userId)
     }
 
     render() {
@@ -37,9 +33,8 @@ const mapStateToProps = (state) => {
 const dispatches = {
     setAuthUserDataCreater,
     setPhotoAuthCreator,
-    setUsersThunk,
-    authMeThunk,
-    LoginOutThunk
+    LoginOutThunk,
+    setUsersThunkPhoto
 }
 
 export default connect(mapStateToProps, dispatches)(HeaderContainer)

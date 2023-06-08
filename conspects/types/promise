@@ -1,0 +1,21 @@
+1) в санке
+let promise = dispatch(authMeThunk())
+
+       promise.then(() => {
+           dispatch(intializedSuccessCreater())
+       })
+
+2) в санке которую мы вызываем
+        return HeaderApi.authMeAxious().then(responce => {
+                    if(responce.data.resultCode === 0){
+                        let {login, id, email} = responce.data.data
+                        dispatch(setAuthUserDataCreater(id, email, login))
+                    }else{
+                        alert('Не приходят данные вашего аккаунта')
+                    }
+                })
+
+3) Promise.all([promise]).then(() => {
+           dispatch(intializedSuccessCreater())
+       })
+

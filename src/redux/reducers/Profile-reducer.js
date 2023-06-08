@@ -3,6 +3,7 @@ const ADD_POST = 'ADD-POST'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const setUserProfile = 'setUserProfileAC'
 const SetStuatus = 'SET_STUTUS'
+const RedirectProfile = 'RedirectProfile'
 
 let initialState = {
     posts: [
@@ -52,10 +53,17 @@ let initialState = {
     newPostText: 'Привет',
     isFetching: false,
     profile: null,
-    status: ''
+    status: '',
+    redirect: false
 }
 const ProfileReducer = (state = initialState, action) => {
     switch (action.type) {
+        case RedirectProfile:
+            return {
+                ...state,
+                redirect: action.redirect
+            }
+
         case SetStuatus:
             return {
                 ...state,
@@ -112,13 +120,22 @@ export const updateStatusThunk = (status) => (dispatch) => {
     })
 }
 
-export const setUsersThunk = (userId) => {
-  return(dispatch) => {
+const redirectCreator = (redirect) => {
+    return{
+        type: RedirectProfile,
+        redirect
+    }
+}
+
+export const setUsersThunk = (userId) => (dispatch) => {
+    if(!userId){
+        dispatch(redirectCreator(true))
+    }
       ProfileApi.getUsersPofile(userId).then(response => {
           dispatch(setUserProfileAC(response.data))
       })
   }
-}
+
 
 export const setUserProfileAC = (profile) => {
     return{

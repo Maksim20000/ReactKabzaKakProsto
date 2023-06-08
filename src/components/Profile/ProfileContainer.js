@@ -8,6 +8,7 @@ import {
     toggleIsFetchingACToProfile, updateStatusThunk
 } from "../../redux/reducers/Profile-reducer";
 import {
+    Navigate,
     useLocation,
     useNavigate,
     useParams,
@@ -32,16 +33,19 @@ function withRouter(Component) {
 
 class ProfileContainer extends React.Component{
 
+
     componentDidMount() {
-        let userId = this.props.router.params.userId
-        if(!userId){
-            userId = 28954
+        let id = this.props.router.params.userId
+        if(!id){
+            id = this.props.id
         }
-        this.props.setUsersThunk(userId)
-        this.props.GetStatusThunk(userId)
+        this.props.setUsersThunk(id)
+        this.props.GetStatusThunk(id)
     }
     render(){
-
+        if(this.props.redirect){
+            return <Navigate to={'/login'} />
+        }
         return(
             <div>
                 <Profile {...this.props} />
@@ -54,8 +58,10 @@ class ProfileContainer extends React.Component{
 
 let mapStateToProps = (state) =>{
     return {
+        redirect: state.profilePage.redirect,
         profile: state.profilePage.profile,
-        status: state.profilePage.status
+        status: state.profilePage.status,
+        id: state.auth.userId
     }
 }
 

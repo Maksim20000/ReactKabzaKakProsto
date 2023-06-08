@@ -7,7 +7,6 @@ import React from "react";
 import {Users} from "./Users";
 import {Preoloder} from "../comman/preloader/Preoloder";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../assets/hoc/isAuthRedirect";
 
 
 let mapStateToProps = (state) => {
@@ -51,5 +50,4 @@ let dispatches = {
 
 export default compose(
     connect(mapStateToProps, dispatches),
-    withAuthRedirect
 )(UsersContainer)

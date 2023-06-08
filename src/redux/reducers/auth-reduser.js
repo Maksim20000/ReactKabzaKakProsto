@@ -39,9 +39,8 @@ const AuthReducer = (state = initialState, action) => {
 }
 
 // авторизуем меня
-export const authMeThunk = () => {
-    return(dispatch) => {
-        HeaderApi.authMeAxious().then(responce => {
+export const authMeThunk = () => (dispatch) => {
+        return HeaderApi.authMeAxious().then(responce => {
             if(responce.data.resultCode === 0){
                 let {login, id, email} = responce.data.data
                 dispatch(setAuthUserDataCreater(id, email, login))
@@ -49,11 +48,10 @@ export const authMeThunk = () => {
                 alert('Не приходят данные вашего аккаунта')
             }
         })
-    }
 }
 
 // ставлю фото
-export const setUsersThunk = (userId) => {
+export const setUsersThunkPhoto = (userId) => {
   return(dispatch) => {
       HeaderApi.setPhotoAxious(userId).then(
           response => {
