@@ -90,10 +90,12 @@ export const onPageChangedThunkCreater = (pageNumber, pageSize) => {
   }
 }
 
-export const getUsersThunkCreater = (currentPage, pageSize) => {
+export const getUsersThunkCreater = (page, pageSize) => {
     return(dispatch) => {
+        dispatch(setCurrentPageAC(page))
+
         dispatch(toggleIsFetchingAC(true))
-        UsersApi.getUsers(currentPage, pageSize).then(data => {
+        UsersApi.getUsers(page, pageSize).then(data => {
             dispatch(setUsersAC(data.items))
             dispatch(setTotalCountAC(data.totalCount))
             dispatch(toggleIsFetchingAC(false))
