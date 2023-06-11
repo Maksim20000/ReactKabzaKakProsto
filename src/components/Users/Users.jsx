@@ -4,16 +4,10 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 
 export let Users = (props) => {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-
-    let pages = []
-    for(let i = 1; i <= pagesCount; i ++){
-        pages.push(i)
-    }
     return(
         <div className={s.main}>
             <div>
-                { pages.map( el => {
+                { props.totalPageCount.map( el => {
                     return(
                         <button onClick={() => { props.onPageChanged(el) }} className={props.currentPage === el && s.selectedPage} key={el.id}>
                             { el }
@@ -34,11 +28,9 @@ export let Users = (props) => {
                             <div className={s.buttonFU}>
                                 {u.followed ? <button disabled={props.followingInProgressBtn.some(id => id === u.id)} onClick={() => {
                                         props.unfollow(u.id)
-
-                                    }} className='btn btn-danger'>UnFollow</button> :
-                                    <button disabled={props.followingInProgressBtn.some(id => id === u.id)} onClick={() => {
+                                    }} className='btn btn-danger'>UnFollow</button>
+                                    : <button disabled={props.followingInProgressBtn.some(id => id === u.id)} onClick={() => {
                                         props.follow(u.id)
-
                                     }} className='btn btn-success'>Follow</button>}
                             </div>
                         </div>

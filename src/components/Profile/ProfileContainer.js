@@ -43,6 +43,7 @@ class ProfileContainer extends React.Component{
         this.props.GetStatusThunk(id)
     }
     render(){
+        console.log('render Profiel')
         if(this.props.redirect){
             return <Navigate to={'/login'} />
         }
@@ -57,6 +58,7 @@ class ProfileContainer extends React.Component{
 
 
 let mapStateToProps = (state) =>{
+    console.log('MSTP')
     return {
         redirect: state.profilePage.redirect,
         profile: state.profilePage.profile,

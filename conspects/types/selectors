@@ -1,1 +1,12 @@
-1) селектор это функция которая принимает весь state достоет из него все что нужно и возвращает в бизнес
+1) селектор это функция которая принимает весь state достоет из него все что нужно и возвращает
+
+2) reselectors - функция которая превращает из множетсва или одного сложного реселектораа в один сложный ресилектор
+
+3) принимает на входе state
+
+const getUsersSelector= (state) => {
+    return state.usersPage.users
+}
+export const getUsersReselectot = createSelector(getUsersSelector, (users) => {
+    return users.filter(m => true)
+})
