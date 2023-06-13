@@ -26,7 +26,8 @@ export let Users = (props) => {
 
                             </div>
                             <div className={s.buttonFU}>
-                                {u.followed ? <button disabled={props.followingInProgressBtn.some(id => id === u.id)} onClick={() => {
+                                {u.followed
+                                    ? <button disabled={props.followingInProgressBtn.some(id => id === u.id)} onClick={() => {
                                         props.unfollow(u.id)
                                     }} className='btn btn-danger'>UnFollow</button>
                                     : <button disabled={props.followingInProgressBtn.some(id => id === u.id)} onClick={() => {

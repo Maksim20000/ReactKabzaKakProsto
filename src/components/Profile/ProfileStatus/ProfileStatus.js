@@ -1,6 +1,6 @@
 import s from './ProfileStatusTest.module.css'
-import {StatusProfile} from "./Status/StatusProfile";
 import React from "react";
+import {StatusProfileHooks} from "./Status/StatusProfileHooks";
 export class ProfileTestStatus extends React.Component{
 
     render() {
@@ -12,7 +12,8 @@ export class ProfileTestStatus extends React.Component{
                          className={s.img}
                     />
                     <div className={s.statusProfile}>
-                        <StatusProfile status={this.props.status}
+                        <StatusProfileHooks status={this.props.status}
+                                            editMode={true}
                                        updateStatusThunk={this.props.updateStatusThunk}
                         />
                     </div>

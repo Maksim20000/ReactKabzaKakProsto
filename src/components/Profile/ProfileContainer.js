@@ -58,7 +58,6 @@ class ProfileContainer extends React.Component{
 
 
 let mapStateToProps = (state) =>{
-    console.log('MSTP')
     return {
         redirect: state.profilePage.redirect,
         profile: state.profilePage.profile,

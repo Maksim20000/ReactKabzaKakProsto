@@ -79,6 +79,37 @@ const UsersRedusor = (state = inishialState, action) => {
     }
 }
 
+export const toggleIsFolloingBtn = (isFetching, userId) => {
+    return {
+        type: Following_is_Fetching_Progress,
+        isFetching, userId
+    }
+}
+
+export const unfollowThunk = (id) => {
+    return(dispatch) => {
+        dispatch(toggleIsFolloingBtn(true, id))
+        UsersApi.unFollow(id).then(data => {
+            if(data.resultCode === 0){
+                dispatch(unfollowSuccess(id))
+            }
+            dispatch(toggleIsFolloingBtn(false, id))
+        })
+    }
+}
+
+export const followThunk = (id) => {
+    return(dispatch) => {
+        dispatch(toggleIsFolloingBtn(true, id))
+        UsersApi.Follow(id).then(data => {
+            if(data.resultCode === 0){
+                dispatch(unfollowSuccess(id))
+            }
+            dispatch(toggleIsFolloingBtn(false, id))
+        })
+    }
+}
+
 export const onPageChangedThunkCreater = (pageNumber, pageSize) => {
   return(dispatch) => {
       dispatch(toggleIsFetchingAC(true))
@@ -103,12 +134,7 @@ export const getUsersThunkCreater = (page, pageSize) => {
     }
 }
 
-export const toggleIsFolloingBtn = (isFetching, userId) => {
-    return {
-        type: Following_is_Fetching_Progress,
-        isFetching, userId
-    }
-}
+
 
 export const toggleIsFetchingAC = (isFeching) => {
     return{
@@ -131,29 +157,7 @@ export const setCurrentPageAC = (currentPage) =>{
     }
 }
 
-export const unfollowThunk = (id) => {
-    return(dispatch) => {
-        dispatch(toggleIsFolloingBtn(true, id))
-        UsersApi.unFollow(id).then(data => {
-            if(data.resultCode === 0){
-                dispatch(unfollowSuccess(id))
-            }
-            dispatch(toggleIsFolloingBtn(false, id))
-        })
-    }
-}
 
-export const followThunk = (id) => {
-    return(dispatch) => {
-        toggleIsFolloingBtn(true, id)
-        UsersApi.Follow(id).then(data => {
-            if(data.resultCode === 0){
-                dispatch(followACSuccess(id))
-            }
-            dispatch(toggleIsFolloingBtn(false, id))
-        })
-    }
-}
 
 export const followACSuccess = (userID) => {
     return{

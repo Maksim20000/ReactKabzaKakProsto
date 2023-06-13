@@ -1,0 +1,12 @@
+хуки - некоторые функции которые
+    1) нельня использовать в условиях
+    2) в циклах
+
+1) структура state hook
+    let [editMode, setEditMode - функция которая изменяяет state] = useState(false)
+    let [status, setStatus] = useState(props.status)
+
+2) useEffect
+    useEffect( () => {
+            setStatus(props.status)
+        }, [] - чтобы функция вызвалась 1 раз)
