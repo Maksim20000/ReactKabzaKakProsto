@@ -1,18 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import {
     GetStatusThunk,
     setUserProfileAC,
     setUsersThunk,
-    toggleIsFetchingACToProfile, updateStatusThunk
+    toggleIsFetchingACToProfile,
+    updateStatusThunk
 } from "../../redux/reducers/Profile-reducer";
-import {
-    Navigate,
-    useLocation,
-    useNavigate,
-    useParams,
-} from "react-router-dom";
+import {Navigate, useLocation, useNavigate, useParams,} from "react-router-dom";
 import {compose} from "redux";
 
 function withRouter(Component) {
@@ -31,30 +27,25 @@ function withRouter(Component) {
     return ComponentWithRouterProp;
 }
 
-class ProfileContainer extends React.Component{
-
-
-    componentDidMount() {
-        let id = this.props.router.params.userId
+const ProfileContainer = (props) => {
+    useEffect(() => {
+        let id = props.router.params.userId
         if(!id){
-            id = this.props.id
+            id = props.id
         }
-        this.props.setUsersThunk(id)
-        this.props.GetStatusThunk(id)
-    }
-    render(){
-        console.log('render Profiel')
-        if(this.props.redirect){
-            return <Navigate to={'/login'} />
-        }
-        return(
-            <div>
-                <Profile {...this.props} />
-            </div>
-        )
-    }
-}
+        props.setUsersThunk(id)
+        props.GetStatusThunk(id)
+    }, [props])
 
+    if (props.redirect) {
+        return <Navigate to={'/login'}/>
+    }
+    return (
+        <div>
+            <Profile {...props} />
+        </div>
+    )
+}
 
 
 let mapStateToProps = (state) =>{

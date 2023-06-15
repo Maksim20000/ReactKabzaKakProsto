@@ -17,12 +17,11 @@ let inishialState = {
         {id: 5, message: 'GitHub top'},
         {id: 6, message: 'Web storm toppp'},
     ],
-    newMessageBody: 'Привет228'
+    newMessageBody: ''
 }
 
 const DialogsRedusor = (state = inishialState, action) => {
     switch (action.type) {
-
         case SENT_MESSAGE:
             let body = action.newMessageBody
             return {

@@ -1,19 +1,22 @@
 import {connect} from "react-redux";
 import {
-    followThunk, getUsersThunkCreater, onPageChangedThunkCreater,
+    followThunk,
+    getUsersThunkCreater,
+    onPageChangedThunkCreater,
     unfollowThunk
 } from "../../redux/reducers/Users-redusor";
-import React from "react";
+import React, {useEffect} from "react";
 import {Users} from "./Users";
 import {Preoloder} from "../comman/preloader/Preoloder";
 import {compose} from "redux";
 import {
-    getCurrentPage, getFollowingInProgress,
+    getCurrentPage,
+    getFollowingInProgress,
     getIsFetching,
-    getPageSize
-    , getUsersReselectot, totalPageCount,
+    getPageSize,
+    getUsersReselectot,
+    totalPageCount,
 } from "../../redux/reselectors/users-selector";
-
 
 
 let mapStateToProps = (state) => {
@@ -27,25 +30,22 @@ let mapStateToProps = (state) => {
     }
 }
 
-class UsersContainer extends React.Component {
-    componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+function UsersContainer(props) {
+    useEffect(() => {
+        props.getUsers(props.currentPage, props.pageSize)
+    }, [props])
+
+    const onPageChanged = (pageNumber) => {
+        props.pageChange(pageNumber, props.pageSize)
     }
+    return (
+        <>
+            {props.isFetching ? <Preoloder/> : null}
 
-    onPageChanged = (pageNumber) => {
-        this.props.pageChange(pageNumber, this.props.pageSize)
-    }
+            <Users {...props} onPageChanged={onPageChanged}/>
+        </>
 
-    render() {
-        return (
-            <>
-                {this.props.isFetching ?  <Preoloder />: null}
-
-                <Users {...this.props} onPageChanged={this.onPageChanged}/>
-            </>
-
-        )
-    }
+    )
 }
 
 let dispatches = {

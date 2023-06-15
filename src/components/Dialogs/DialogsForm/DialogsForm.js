@@ -11,13 +11,15 @@ const minLength2 = minLenghtCreter(3)
           <form onSubmit={props.handleSubmit}>
               <div className='d-flex'>
                         <Field
-                            component={TextArea}
+                            component={'input'}
                             className="form-control"
                             value={ props.state.newMessageBody }
                             placeholder='Нажмин на меня!'
                             validate={[required, maxLength30, minLength2]}
                             name={'newMessageBody'}
-                        ></Field></div>
+                        ></Field>
+                  <button type='submit' className={'btn btn-success'}>отправить</button>
+              </div>
 
           </form>
       </>

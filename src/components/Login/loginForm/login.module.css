@@ -1,0 +1,6 @@
+.form_error{
+    height: 50px;
+    width: 190px;
+    display: flex;
+    justify-content: center;
+}

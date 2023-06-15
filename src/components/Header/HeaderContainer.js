@@ -5,21 +5,16 @@ import {connect} from "react-redux";
 import {
     LoginOutThunk,
     setAuthUserDataCreater,
-    setPhotoAuthCreator, setUsersThunkPhoto
+    setPhotoAuthCreator,
+    setUsersThunkPhoto
 } from "../../redux/reducers/auth-reduser";
-class HeaderContainer extends React.Component {
 
-    componentDidMount() {
-       //this.props.setUsersThunkPhoto(this.props.userId)
-    }
-
-    render() {
-        return(
-            <div className={s.header}>
-                <Header {...this.props}/>
-            </div>
-        )
-    }
+const HeaderContainer = (props) => {
+    return (
+        <div className={s.header}>
+            <Header {...props}/>
+        </div>
+    )
 }
 
 const mapStateToProps = (state) => {
