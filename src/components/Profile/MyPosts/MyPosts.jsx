@@ -4,8 +4,8 @@ import Post from "./post/Post";
 import {AddNewPostForm} from "./NewMessageFormProfile/NewMessageFormProfile";
 
 
-
-function MyPosts(props) {
+const MyPosts = React.memo((props) => {
+    console.log('render')
     const profileElement = props.posts.map((el) => <Post
         key={el.id}
         name={el.name}
@@ -28,9 +28,9 @@ function MyPosts(props) {
                                 {...props}/>
             </div>
             <div className={s.posts}>
-                { profileElement }
+                {profileElement}
             </div>
         </div>)
-}
+})
 
 export default MyPosts

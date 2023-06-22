@@ -62,3 +62,11 @@ class Man extends React.Component - наследуется от другого �
 
                 })}
         }
+
+4) сравнивает старые пропсы с новыми
+shouldComponentUpdate(nextProps, nextState, nextContext) {
+           // проверяет старые проа=псы с новыми
+           return nextProps !== this.props || nextState !== this.state
+       }
+
+   в сокращение этих 3 строк заменяем component на PureComponent
