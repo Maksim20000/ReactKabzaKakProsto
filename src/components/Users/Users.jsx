@@ -7,9 +7,9 @@ export let Users = (props) => {
     return(
         <div className={s.main}>
             <div>
-                { props.totalPageCount.map( el => {
+                { props.totalPageCount.map( (el, index) => {
                     return(
-                        <button onClick={() => { props.onPageChanged(el) }} className={props.currentPage === el && s.selectedPage} key={el.id}>
+                        <button onClick={() => { props.onPageChanged(el) }} className={props.currentPage === el && s.selectedPage} key={index}>
                             { el }
                         </button>)
                 }) }

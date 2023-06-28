@@ -13,8 +13,8 @@ import {MessageDialogsFormRedux} from "./DialogsForm/DialogsForm";
 function Dialogs(props){
     let state = props.state.dialogsPage
 
-    let dialogsElements = state.dialogs.map( d => <DialogItem id={d.id} key={d.id} name={d.name} /> )
-    let MessagesElements = state.messages.map( m => <Message message= {m.message} key={m.id}/> )
+    let dialogsElements = state.dialogs.map( (d, index) => <DialogItem id={d.id} key={index} name={d.name} /> )
+    let MessagesElements = state.messages.map( (m, index) => <Message message= {m.message} key={index}/> )
 
     const AddNewMessage = (values) => {
         props.onSendMessageClick(values.newMessageBody)
