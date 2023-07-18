@@ -27,9 +27,6 @@ export const totalPageCount = createSelector(getPageSize, getTotalUsersCount,
     })
 
 
-
-
-
 export const getCurrentPage = (state) => {
     return state.usersPage.currentPage
 }

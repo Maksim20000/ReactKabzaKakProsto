@@ -49,7 +49,7 @@
             import s from './Profile.module.css'
         3) обращаться к нему className={s.whiteBG}
 
-6) Чтобы создать переменную мы исользуем команду:
+6) Чтобы создать ref мы исользуем команду:
       let newPostElement = React.createRef();
       <textarea ref={ refTextArea } value='it'/>
 

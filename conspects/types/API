@@ -18,7 +18,7 @@
 
 2) http get 'https://social-network.samuraijs.com/api/1.0/users?page=3&count=2' - строка запроса
     Query Parameters:
-        count: (integer - default: 10 - maximum: 100) - количество эзиров на 1 страничке
+        count: (integer - default: 10 - maximum: 100) - количество юзиров на 1 страничке
         page size (how many items will be returned in response)
 
         page: (integer - default: 1) какая это страничка по счету
